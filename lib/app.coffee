@@ -13,6 +13,8 @@ module.exports = () ->
 #  
 #  testJob.start()
 
-  request('http://www.reddit.com/r/startups/?count=150&after=t3_2pf6pb', (err, response) ->
-    console.log(response)
+  request('https://www.google.com/calendar/render?pli=1#g', (err, response) ->
+    if err
+      console.log(err)
+    console.log(response.responseObj.html())
   )
