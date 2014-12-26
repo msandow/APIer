@@ -1,5 +1,6 @@
 CronJob = require('cron').CronJob
 request = require('./request.coffee')
+mapper = require('./mapper.coffee')
 
 module.exports = () ->
 
@@ -13,8 +14,11 @@ module.exports = () ->
 #  
 #  testJob.start()
 
-  request('https://www.google.com/calendar/render?pli=1#g', (err, response) ->
+  request.make('http://sfbay.craigslist.org/search/sss', (err, response) ->
     if err
       console.log(err)
-    console.log(response.responseObj.html())
+    #d.val=arrayOf(range("span.pl a",0,1),(->{text: @text()}))
+    mapper.query('d.val=object((->{links: @(".rightpane .row[data-pid]").length, title: @("title").text()}))', response.responseObj, (data)->
+      console.log(data)
+    )
   )
