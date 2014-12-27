@@ -13,4 +13,5 @@ module.exports = (title, company, link, time)->
     time: time
     linkHash: hash(link)
     positionHash: hash(company + title)
+    content: false
   }

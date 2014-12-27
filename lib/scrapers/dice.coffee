@@ -18,9 +18,9 @@ module.exports = () ->
       
       dom('.serp-result-content').each(->
         listings.push(new obj(
-            dom(@).find('h3 a').text()
-            dom(@).find('.employer a').text()
-            dom(@).find('h3 a').attr('href')
+            dom(@).find('h3 a').text(),
+            dom(@).find('.employer a').text(),
+            dom(@).find('h3 a').attr('href'),
             self.timeParser(dom(@).find('.posted').text())
           )
         )

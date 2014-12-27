@@ -16,9 +16,9 @@ module.exports = () ->
       dom('tr.prefRow').each(->
         if dom(@).find('.jl_col4').text().indexOf('Relocate') is -1 and dom(@).find('.JobListMidAd').length is 0
           listings.push(new obj(
-              dom(@).find('.jl_col2 a.prefTitle').text()
-              dom(@).find('.jl_col3 .prefCompany').text()
-              dom(@).find('.jl_col2 a.prefTitle').attr('href')
+              dom(@).find('.jl_col2 a.prefTitle').text(),
+              dom(@).find('.jl_col3 .prefCompany').text(),
+              dom(@).find('.jl_col2 a.prefTitle').attr('href'),
               self.timeParser(dom(@).find('.jl_col5 span[title]').text())
             )
           )

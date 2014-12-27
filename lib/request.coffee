@@ -40,16 +40,16 @@ module.exports =
         isHtml = response.headers['content-type'].indexOf('text/html') > -1 or
           response.headers['content-type'].indexOf('text/xml') > -1 or
           response.headers['content-type'].indexOf('+xml') > -1
-
-        return null unless isHtml
+        
         return JSON.parse(response.body) if isJson
         return htmlBodyParse(response.body, parsed) if isHtml
+        return null unless isHtml
 
       statusCode: response.statusCode
       headers: response.headers
     )
   
-  make: (_url, _cb) ->
+  make: (_url, _cb, _postdata=false) ->
     jar = request.jar()
     self = this
 
@@ -74,7 +74,8 @@ module.exports =
             'Connection': 'keep-alive'
             'Accept-Language': 'en-US,en;q=0.5'
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
-          method: 'GET'
+          method: if _postdata then 'POST' else 'GET'
+          formData: if _postdata then _postdata else false
           gzip: true
           jar: jar
           ,

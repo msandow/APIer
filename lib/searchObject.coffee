@@ -4,6 +4,8 @@ module.exports = (conf) ->
     days: conf.days or 1
     location: conf.location or ''
     negative: conf.negative or []
+    companies: conf.companies or []
+    filterLocations: conf.filterLocations or []
   }
 
 

@@ -30,8 +30,11 @@ module.exports =
     
   isJSONString: (str)->
     try
-      JSON.parse(str);
+      JSON.parse(str)
     catch e
-      return false;
+      return false
     
-    return true;
+    return true
+    
+  escapeRegExp: (str)->
+    str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&").replace(/\s/g, '\\s')

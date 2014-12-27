@@ -4,10 +4,16 @@ hash = require('./../hash.coffee')
 console = require('./../console.coffee')
 cache = require('./../cache.coffee')
 fs = require('fs')
+utilities = require('./../utilities.coffee')
+regex =
+  prefix: '([^A-Za-z0-9]|^)'
+  suffix: '([^A-Za-z0-9]|$)'
 
 class ScraperCore
   constructor: (configs = {})->
     @listingURL = configs.listingURL or 'localhost'
+    @type = configs.type or 'GET'
+    @postData = configs.postData or {}
     @listingParser = configs.listingParser or ((dom)->[])
     @search = false
     true
@@ -26,58 +32,100 @@ class ScraperCore
     map.setMilliseconds(0)
 
     if /^\d+\sday/.test(str)
-        i = parseInt(str)
-        map.setDate(curr.getDate()-i)
+      i = parseInt(str)
+      map.setDate(curr.getDate()-i)
     else if /\d{4}-\d{1,2}-\d{1,2}\s\d+/.test(str)
-        arr = str.split(' ')
-        arr[0] = arr[0].split('-').map((i)-> parseInt(i))
-        arr[1] = arr[1].split(':').map((i)-> parseInt(i))
+      arr = str.split(' ')
+      arr[0] = arr[0].split('-').map((i)-> parseInt(i))
+      arr[1] = arr[1].split(':').map((i)-> parseInt(i))
 
-        map.setFullYear(arr[0][0], arr[0][1]-1, arr[0][2])
-        map.setHours(arr[1][0], arr[1][1])
+      map.setFullYear(arr[0][0], arr[0][1]-1, arr[0][2])
+      map.setHours(arr[1][0], arr[1][1])
+    else if /\d{4}-\d{1,2}-\d{1,2}t/.test(str)
+      arr = str.split('t')
+      
+      arr[0] = arr[0].split('-').map((i)-> parseInt(i))
+      arr[1] = arr[1].split(':').map((i)-> parseInt(i))
+
+      map.setFullYear(arr[0][0], arr[0][1]-1, arr[0][2])
+      map.setHours(arr[1][0], arr[1][1])
     else if /[a-z]{3,4}-\d{1,2}-\d{4}/.test(str)
-        arr = str.split('-')
+      arr = str.split('-')
 
-        switch(arr[0])
-            when 'jan'
-                map.setMonth(0)
-            when 'feb', 'febr'
-                map.setMonth(1)
-            when 'mar'
-                map.setMonth(2)
-            when 'apr'
-                map.setMonth(3)
-            when 'may'
-                map.setMonth(4)
-            when 'jun', 'june'
-                map.setMonth(5)
-            when 'jul', 'july'
-                map.setMonth(6)
-            when 'aug'
-                map.setMonth(7)
-            when 'sep', 'sept'
-                map.setMonth(8)
-            when 'oct'
-                map.setMonth(9)
-            when 'nov'
-                map.setMonth(10)
-            when 'dec'
-                map.setMonth(11)                                    
+      switch(arr[0])
+        when 'jan'
+          map.setMonth(0)
+        when 'feb', 'febr'
+          map.setMonth(1)
+        when 'mar'
+          map.setMonth(2)
+        when 'apr'
+          map.setMonth(3)
+        when 'may'
+          map.setMonth(4)
+        when 'jun', 'june'
+          map.setMonth(5)
+        when 'jul', 'july'
+          map.setMonth(6)
+        when 'aug'
+          map.setMonth(7)
+        when 'sep', 'sept'
+          map.setMonth(8)
+        when 'oct'
+          map.setMonth(9)
+        when 'nov'
+          map.setMonth(10)
+        when 'dec'
+          map.setMonth(11)                                    
 
-        map.setDate(parseInt(arr[1]))
-        map.setFullYear(parseInt(arr[2]))
+      map.setDate(parseInt(arr[1]))
+      map.setFullYear(parseInt(arr[2]))
+    else if /[a-z]{3,4}\s\d{1,2},\s\d{4}/.test(str)
+      arr = str.replace(/,/g, '').split(' ')
+
+      switch(arr[0])
+        when 'jan'
+          map.setMonth(0)
+        when 'feb', 'febr'
+          map.setMonth(1)
+        when 'mar'
+          map.setMonth(2)
+        when 'apr'
+          map.setMonth(3)
+        when 'may'
+          map.setMonth(4)
+        when 'jun', 'june'
+          map.setMonth(5)
+        when 'jul', 'july'
+          map.setMonth(6)
+        when 'aug'
+          map.setMonth(7)
+        when 'sep', 'sept'
+          map.setMonth(8)
+        when 'oct'
+          map.setMonth(9)
+        when 'nov'
+          map.setMonth(10)
+        when 'dec'
+          map.setMonth(11)                                    
+
+      map.setDate(parseInt(arr[1]))
+      map.setFullYear(parseInt(arr[2]))
     else if /\d{1,2}\/\d{1,2}\/\d{4}/.test(str)
-        arr = str.split('/').map((i)-> parseInt(i))
+      arr = str.split('/').map((i)-> parseInt(i))
 
-        map.setFullYear(arr[2],arr[0]-1,arr[1])
+      map.setFullYear(arr[2],arr[0]-1,arr[1])
     else if str is 'yesterday'
-        map.setDate(curr.getDate()-1)
+      map.setDate(curr.getDate()-1)
     else if /^\d+\sweek/.test(str)
-        i = parseInt(str)
-        map.setDate(curr.getDate()-(i*7))
+      i = parseInt(str)
+      map.setDate(curr.getDate()-(i*7))
+    else if /^\d+\shour/.test(str)
+      i = parseInt(str)
+      map.setHours(map.getHours() - i)
     else if /^\d{4}/.test(str)
-        str = str.replace('t00:00:00.0000000','')
-        map.setTime(Date.parse(str))
+      str = str.replace('t00:00:00.0000000','')
+      map.setTime(Date.parse(str))
 
     #if isNaN( map.getTime() )
         #console.log(str)
@@ -85,7 +133,7 @@ class ScraperCore
     map
 
   contentParser: (ob, origin) =>
-    for s in ['#pnlJobDescription', '#job_body_box', '.pjb-box-inner:first', 'section.userbody', '.dc_content', '#detailDescription', '.jobdetail', '.detail:first', '.job_description', '.jobDescriptionContent', '.jvdescriptionbody', '#js-job-description', '#content', '.des_content', '#lbljobdesc', '.iCIMS_JobPage', '.content:first', '#job_summary', '.job-details', '.jobDetailContent', '#jobDesciptionDiv', '#jobcopy', '#job_desc']
+    for s in ['#pnlJobDescription', '#job_body_box', '.pjb-box-inner:first', 'section.userbody', '.dc_content', '#detailDescription', '.jobdetail', '.detail:first', '.job_description', '.jobDescriptionContent', '.jvdescriptionbody', '#js-job-description', '#content', '.des_content', '.description-section', '#lbljobdesc', '.iCIMS_JobPage', '.content:first', '#job_summary', '.ftlrow .editablesection', '.job-details', '.jobDetailContent', '#jobDesciptionDiv', '#jobcopy', '#job_desc', 'table[role="presentation"]', '.iCIMS_JobPage', '.fixedwidthJobPosting']
       ss = s.replace(':first','')
       if ob(ss).length
         if s.indexOf(':first') > -1
@@ -103,17 +151,30 @@ class ScraperCore
     @listingURL
   
   getListingPage: (cb, withCache)->
+    if @type is 'POST'
+      send = @postData
+    else
+      send = false
+    
     request.make(@buildListingPageURL(), (err, response)->
       cb(err, response)
-    )
+    , send)
+  
+  listingFilter: (c)=>
+    d = new Date()
+    d.setHours(0,0,0,0)
+
+    companies = if @search.companies.length then new RegExp(@search.companies.map((i)->
+      regex.prefix + utilities.escapeRegExp(i) + regex.suffix
+    ).join('|').trim(), 'gi') else false
+
+    d.getTime() - c.time <= (@search.days * 86400000) and
+    (not companies or c.company is '??' or not companies.test(c.company)) and
+    c.link isnt '??'
   
   getListingLinks: (listingPage, cb)->
     dom = listingPage.responseObj
-    collection = @listingParser(dom).filter((c)=>
-      d = new Date()
-      d.setHours(0,0,0,0)
-      d.getTime() - c.time <= (@search.days * 86400000)
-    )
+    collection = @listingParser(dom).filter(@listingFilter)
     cb(null, collection)
     
   fetchContent: (links, cb)->
@@ -122,7 +183,8 @@ class ScraperCore
     jobs = links.map((j)->
       (_cb)->
         request.make(j.link, (err, response)->
-          j.content = self.contentParser(response.responseObj, j.link)
+          if response
+            j.content = self.contentParser(response.responseObj, j.link)
           _cb(null,j)
         )
     )
@@ -145,8 +207,20 @@ class ScraperCore
   fetch: (done)->
     @getListingPage((listingErr, listingResponse)=>
       @getListingLinks(listingResponse, (linksErr, linksResponse)=>
-        @fetchContent(linksResponse, (objResponse)->
-          done(null, objResponse)
+        @fetchContent(linksResponse, (objResponse)=>
+          exclusive = if @search.negative.length then new RegExp(@search.negative.map((i)->
+            regex.prefix + utilities.escapeRegExp(i) + regex.suffix
+          ).join('|').trim(), 'gim') else false
+          
+          badCities = if @search.filterLocations.length then new RegExp(@search.filterLocations.map((i)->
+            regex.prefix + utilities.escapeRegExp(i) + regex.suffix
+          ).join('|').trim(), 'gim') else false
+
+          done(null, objResponse.filter((i)=>
+            i.content and
+              (exclusive is false or (not exclusive.test(i.content) and not exclusive.test(i.title))) and
+              (badCities is false or (not badCities.test(i.content)))
+          ))
         )
       )
     )
