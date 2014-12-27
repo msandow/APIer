@@ -27,3 +27,11 @@ module.exports =
         newarr.push(i)
     
     newarr
+    
+  isJSONString: (str)->
+    try
+      JSON.parse(str);
+    catch e
+      return false;
+    
+    return true;

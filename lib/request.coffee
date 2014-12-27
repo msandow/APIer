@@ -3,6 +3,7 @@ request = require('request')
 url = require('url')
 cache = require('./cache.coffee')
 console = require('./console.coffee')
+utilities = require('./utilities.coffee')
 
 pathFixer = (oh, parsed) ->
   if /^\/\//i.test(oh)
@@ -35,11 +36,14 @@ module.exports =
 
     cb(null, 
       responseObj: do () ->
+        isJson = utilities.isJSONString(response.body)
         isHtml = response.headers['content-type'].indexOf('text/html') > -1 or
           response.headers['content-type'].indexOf('text/xml') > -1 or
           response.headers['content-type'].indexOf('+xml') > -1
+
         return null unless isHtml
-        return htmlBodyParse(response.body, parsed) if isHtml 
+        return JSON.parse(response.body) if isJson
+        return htmlBodyParse(response.body, parsed) if isHtml
 
       statusCode: response.statusCode
       headers: response.headers

@@ -4,7 +4,7 @@ util = require('./utilities.coffee')
 
 search =
   search: ['developer','javascript']
-  negative: ['.net','ios','rails','python']
+  negative: ['.net','ios','rails','python','ruby','android','java']
   location: 'san francisco'
   days: 3
 
@@ -15,6 +15,9 @@ cl.setSearch(mySearch)
 
 cb = require(__dirname + '/scrapers/careerbuilder.coffee')()
 cb.setSearch(mySearch)
+
+di = require(__dirname + '/scrapers/dice.coffee')()
+di.setSearch(mySearch)
 
 module.exports = () ->
 
@@ -33,11 +36,19 @@ module.exports = () ->
       cl.fetch(done)
     CareerBuilder: (done)->
       cb.fetch(done)
+    Dice: (done)->
+      di.fetch(done)
   },
-  (err, response)->
-    results = util.merge(response.Craigslist, response.CareerBuilder)
+  (err, response)-> 
+    results = util.merge(response.Craigslist, response.CareerBuilder, response.Dice)
     results = util.uniqueObjsBy(results, 'positionHash').sort((a, b)->
-      if a.time > b.time then -1 else if a.time < b.time then 1 else 0
+      return  1 if a.time < b.time
+      return -1 if a.time > b.time
+      return  1 if a.title > b.title
+      return -1 if a.title < b.title
+      return 0
+    ).filter((i)->
+      i.content
     )
 
     console.log(results.length)

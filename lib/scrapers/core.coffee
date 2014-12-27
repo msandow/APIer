@@ -85,7 +85,7 @@ class ScraperCore
     map
 
   contentParser: (ob, origin) =>
-    for s in ['#pnlJobDescription', '#job_body_box', '.pjb-box-inner:first', 'section.userbody', '.dc_content', '#detailDescription', '.jobdetail', '.detail:first', '.job_description', '.jobDescriptionContent', '.jvdescriptionbody', '#js-job-description', '#content', '.des_content', '#lbljobdesc', '.iCIMS_JobPage', '.content:first', '#job_summary', '.job-details', '.jobDetailContent', '#jobDesciptionDiv', '#jobcopy']
+    for s in ['#pnlJobDescription', '#job_body_box', '.pjb-box-inner:first', 'section.userbody', '.dc_content', '#detailDescription', '.jobdetail', '.detail:first', '.job_description', '.jobDescriptionContent', '.jvdescriptionbody', '#js-job-description', '#content', '.des_content', '#lbljobdesc', '.iCIMS_JobPage', '.content:first', '#job_summary', '.job-details', '.jobDetailContent', '#jobDesciptionDiv', '#jobcopy', '#job_desc']
       ss = s.replace(':first','')
       if ob(ss).length
         if s.indexOf(':first') > -1
@@ -95,7 +95,7 @@ class ScraperCore
 
         return o.text().replace(/\s{2,}|\t|\r|\n|\r\n/g,'')
 
-    console.warn(origin)
+    console.warn('Content unable to be parsed for',origin)
 
     false
 
