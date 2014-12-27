@@ -26,3 +26,13 @@ module.exports =
     fs.readFile(CACHE_DIR + hash(str), (err, data)->
       cb(err, data.toString())
     )
+    
+  clear: (str, cb) ->
+    @exists(str, (exists)->
+      if exists
+        fs.unlink(CACHE_DIR + hash(str), ()->
+          cb()
+        )
+      else
+        cb()
+    )

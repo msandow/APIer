@@ -1,6 +1,20 @@
 CronJob = require('cron').CronJob
-request = require('./request.coffee')
-mapper = require('./mapper.coffee')
+async = require('async')
+util = require('./utilities.coffee')
+
+search =
+  search: ['developer','javascript']
+  negative: ['.net','ios','rails','python']
+  location: 'san francisco'
+  days: 3
+
+mySearch = require(__dirname + '/searchObject.coffee')(search)
+
+cl = require(__dirname + '/scrapers/craigslist.coffee')()
+cl.setSearch(mySearch)
+
+cb = require(__dirname + '/scrapers/careerbuilder.coffee')()
+cb.setSearch(mySearch)
 
 module.exports = () ->
 
@@ -13,12 +27,18 @@ module.exports = () ->
 #  )
 #  
 #  testJob.start()
-
-  request.make('http://sfbay.craigslist.org/search/sss', (err, response) ->
-    if err
-      console.log(err)
-    #d.val=arrayOf(range("span.pl a",0,1),(->{text: @text()}))
-    mapper.query('d.val=object((->{links: @(".rightpane .row[data-pid]").length, title: @("title").text()}))', response.responseObj, (data)->
-      console.log(data)
+  
+  async.series({
+    Craigslist: (done)->
+      cl.fetch(done)
+    CareerBuilder: (done)->
+      cb.fetch(done)
+  },
+  (err, response)->
+    results = util.merge(response.Craigslist, response.CareerBuilder)
+    results = util.uniqueObjsBy(results, 'positionHash').sort((a, b)->
+      if a.time > b.time then -1 else if a.time < b.time then 1 else 0
     )
+
+    console.log(results.length)
   )

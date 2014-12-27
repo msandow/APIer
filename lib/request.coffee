@@ -31,7 +31,7 @@ module.exports =
   
   respond: (_url, data, cb) ->
     parsed = url.parse(_url)
-    response = JSON.parse(data)
+    response = if typeof data is 'object' then data else JSON.parse(data)
 
     cb(null, 
       responseObj: do () ->

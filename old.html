@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <script src="coffee-script.js" type="text/javascript"></script>
+        <script src="jquery-1.11.1.min.js" type="text/javascript"></script>
+        <script src="ajaxq.js" type="text/javascript"></script>
+        <link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>
+        <style type="text/css">
+            html{height:100%;}
+            body{height:100%;margin:0px; padding:0px;overflow:hidden;background-color:#e1dac4;padding:20px;font-family: 'Dosis', sans-serif; font-weight:400;font-size:14px;}
+            div, span, p, a, img{position:relative;margin:0px;padding:0px;}
+            
+            b, strong{font-weight:700;}
+            
+            .clear{clear:both;height:0px;}
+            
+            .boxy{background-color:#374044;border-radius:20px;background-clip:padding-box;padding:50px 0px 10px 0px;margin:0px auto;
+                color:white;-webkit-box-shadow: 0px 16px 28px 0px rgba(55,64,68,0.8);box-shadow: 0px 16px 28px 0px rgba(55,64,68,0.8);
+                }
+            
+            .boxy .quarter{
+                float:left;
+                width:23%;
+                padding:10px 1%;
+            }
+            
+            .boxy b, .boxy a, .boxy a:link, .boxy a:visited, .boxy a:hover{
+                color:#5CB899;
+                text-decoration:none;
+            }
+            
+            .boxy a:visited{color:#7a6e53;}
+            
+            .boxy p{padding:10px;}
+            
+            .boxy .capped{max-height:800px;overflow:auto;}
+            
+            .boxy header{
+                display:block;
+                position:absolute;
+                top:0px;
+                left:0px;
+                border-radius:20px;background-clip:padding-box;
+                padding:10px 0px;background-color:#5cb899;font-weight:bold;
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+                text-align:center;
+                font-size:18px;font-weight:700;
+                width:100%;
+            }
+            
+            .boxy.list header{
+                background-color:#fac870;
+            }
+            
+            .boxy.list b, .boxy.list a, .boxy.list a:link, .boxy.list a:visited, .boxy.list a:hover{
+                color:#fac870;
+                text-decoration:none;
+            }
+            
+            .boxy.list a:visited{color:#4e705d;}
+        </style>
+        <script type="text/coffeescript">
+            ($ ->
+                class Ajaxy
+                    utf8_to_b64 : ( str ) ->
+                        window.btoa(encodeURIComponent(str))
+                    
+                    makeRequest : (options, cb, key) =>
+                        $.ajaxq(key, 
+                            type: "GET"
+                            url: "http://usastra.com/proxy.php"
+                            data:
+                                u: @utf8_to_b64(JSON.stringify(options))
+                            success: (response)->
+                                response = response.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,'').replace(/\s{2,}|\t|\r|\n|\r\n/g,' ')
+                                jq = $('<div></div>').html(response.replace(/^[\s\S]*<body.*?>([\s\S]*)<\/body>[\s\S]*$/gi, '$1'))
+                                jq.find('script, img').remove()
+                                cb(jq)
+                        )
+                    
+                    cachedRequest : (url='', key='', cb=(->))=>
+                        @makeRequest(
+                            pass: 'word',
+                            cache: 1,
+                            url: url
+                        , cb, key
+                        )
+                    
+                    uncachedRequest : (url='', key='', cb=(->))=>                        
+                        @makeRequest(
+                            pass: 'word',
+                            url: url
+                        , cb, key
+                        )
+                
+                class JobSite extends Ajaxy
+                    timeParser: (str) =>
+                        str = str.toLowerCase().trim().replace(/posted:\s+/i,'')
+                        curr = new Date()
+                        map = new Date()
+                        
+                        map.setHours(0)
+                        map.setMinutes(0)
+                        map.setSeconds(0)
+                        map.setMilliseconds(0)
+                                                
+                        if /^\d+\sday/.test(str)
+                            i = parseInt(str)
+                            map.setDate(curr.getDate()-i)
+                        else if /\d{4}-\d{1,2}-\d{1,2}\s\d+/.test(str)
+                            arr = str.split(' ')
+                            arr[0] = arr[0].split('-').map((i)-> parseInt(i))
+                            arr[1] = arr[1].split(':').map((i)-> parseInt(i))
+                            
+                            map.setFullYear(arr[0][0], arr[0][1]-1, arr[0][2])
+                            map.setHours(arr[1][0], arr[1][1])
+                        else if /[a-z]{3,4}-\d{1,2}-\d{4}/.test(str)
+                            arr = str.split('-')
+                            
+                            switch(arr[0])
+                                when 'jan'
+                                    map.setMonth(0)
+                                when 'feb', 'febr'
+                                    map.setMonth(1)
+                                when 'mar'
+                                    map.setMonth(2)
+                                when 'apr'
+                                    map.setMonth(3)
+                                when 'may'
+                                    map.setMonth(4)
+                                when 'jun', 'june'
+                                    map.setMonth(5)
+                                when 'jul', 'july'
+                                    map.setMonth(6)
+                                when 'aug'
+                                    map.setMonth(7)
+                                when 'sep', 'sept'
+                                    map.setMonth(8)
+                                when 'oct'
+                                    map.setMonth(9)
+                                when 'nov'
+                                    map.setMonth(10)
+                                when 'dec'
+                                    map.setMonth(11)                                    
+                            
+                            map.setDate(parseInt(arr[1]))
+                            map.setFullYear(parseInt(arr[2]))
+                        else if /\d{1,2}\/\d{1,2}\/\d{4}/.test(str)
+                            arr = str.split('/').map((i)-> parseInt(i))
+                            
+                            map.setFullYear(arr[2],arr[0]-1,arr[1])
+                        else if str is 'yesterday'
+                            map.setDate(curr.getDate()-1)
+                        else if /^\d+\sweek/.test(str)
+                            i = parseInt(str)
+                            map.setDate(curr.getDate()-(i*7))
+                        else if /^\d{4}/.test(str)
+                            str = str.replace('t00:00:00.0000000','')
+                            map.setTime(Date.parse(str))
+                        
+                        #if isNaN( map.getTime() )
+                            #console.log(str)
+                        
+                        map
+                    
+                    contentParser: (ob, origin) =>
+                        for s in ['#pnlJobDescription', '#job_body_box', '.pjb-box-inner:first', 'section.userbody', '.dc_content', '#detailDescription', '.jobdetail', '.detail:first', '.job_description', '.jobDescriptionContent', '.jvdescriptionbody', '#js-job-description', '#content', '.des_content', '#lbljobdesc', '.iCIMS_JobPage', '.content:first', '#job_summary', '.job-details', '.jobDetailContent', '#jobDesciptionDiv', '#jobcopy']
+                            if ob.find(s).length
+                                return ob.find(s).html().replace(/\s{2,}|\t|\r|\n|\r\n/g,'')
+                        
+                        console.log(origin)
+                        
+                        false
+                    
+                    counter : (per) =>
+                        @dom.html('<b>'+@source+':</b>&nbsp;&nbsp;'+Math.round(per*100))
+                    
+                    getListings: (cb) =>
+                        @uncachedRequest(@url, 'listings', (response)=>
+                            resp = @listingsParser(response)                            
+                            .map((i) =>
+                                i.title = $.trim(i.title)
+                                i.source = @source
+                                
+                                if i.company?.length
+                                    i.company = $.trim(i.company)
+                                i
+                                i
+                            )
+                            .filter((i) ->
+                                t = i.title.toLowerCase()
+                                c = if i.company? then i.company.toLowerCase() else ''
+                                
+                                i.link and not /java(\s|\))/.test(t) and c isnt 'cybercoders' and c isnt 'accenture' and c.indexOf('technology') is -1 and c.indexOf('solutions') is -1 and c.indexOf('active soft') and c.indexOf('staffing') is -1 and t.indexOf('android') is -1 and t.indexOf('ios') is -1 and
+                                    t.indexOf('salesforce') is -1 and t.indexOf('mobile') is -1 and t.indexOf('net') is -1 and t.indexOf('python') is -1 and t.indexOf('ruby') is -1 and t.indexOf('c++') is -1 and t.indexOf('contract') is -1 and t.indexOf('junior') is -1 and t.indexOf('automation') is -1 and
+                                    t.indexOf('perl') is -1 and c.indexOf('resources') is -1 and c.indexOf('employment') is -1 and c.indexOf('group') is -1 and c.indexOf('ascendify') is -1 and c.indexOf('ampush') is -1 and c.indexOf('zynga') is -1 and
+                                    c.indexOf('marin') is -1 and c.indexOf('mulesoft') is -1 and c.indexOf('mindjet') is -1 and c.indexOf('imgur') is -1 and c.indexOf('mashape') is -1  and c.indexOf('plastiq') is -1 and c.indexOf('humble') is -1 and c.indexOf('universal\ssoftware') is -1 and
+                                    c.indexOf('3s business') is -1 and c.indexOf('weebly') is -1 and c.indexOf('zipongo') is -1 and c.indexOf('hellosign') is -1 and c.indexOf('5th finger') is -1 and c.indexOf('mitchell/martin') is -1 and t.indexOf('quality') is -1 and c.indexOf('lynda') is -1 and
+                                    c.indexOf('capital one') is -1 and c.indexOf('balluun') is -1
+                            )
+                            
+                            #@counter(1)                            
+                            #cb(resp)
+                            #return true
+                            
+                            completed = 0;
+                            i = 0;
+                            
+                            if resp.length
+                                while i < resp.length
+                                    do ((idx)=>
+                                        =>
+                                            if not localStorage.getItem(window.btoa(encodeURIComponent(resp[idx].link)))
+                                                @cachedRequest(resp[idx].link, resp[idx].source, (response)=>                                            
+                                                    resp[idx].content = @contentParser(response,resp[idx].link)
+                                                    
+                                                    try
+                                                        localStorage.setItem(window.btoa(encodeURIComponent(resp[idx].link)),resp[idx].content)
+                                                    catch err
+                                                        if err.code is 1014
+                                                            localStorage.clear()
+                                                            location.reload(true)
+                                                    
+                                                    completed++
+                                                    @counter(completed/resp.length)
+                                                    if completed is resp.length
+                                                        cb(resp)
+                                                )
+                                            else
+                                                resp[idx].content = localStorage.getItem(window.btoa(encodeURIComponent(resp[idx].link)))
+                                                completed++
+                                                @counter(completed/resp.length)
+                                                if completed is resp.length
+                                                    cb(resp)
+                                    )(i)
+                                    i++
+                            else
+                                @counter(1)
+                                cb(resp)
+                        )
+                        true
+                    
+                    constructor: (@source, @url, @listingsParser)->                        
+                        @dom = $('<div class="quarter"></div>').appendTo('.boxy').html('<b>'+@source+':</b>&nbsp;&nbsp;0')
+                        true
+                        
+                jobSites =
+                    CareerBuilder: new JobSite(
+                            'CareerBuilder',
+                            'http://www.careerbuilder.com/jobseeker/jobs/jobresults.aspx?as%3AMXJobSrchCriteria_JobQueryType=RAD&as%3Ach=al&as%3AMXJobSrchCriteria_QuerySrc=AdvSearchFrm&as%3AIPath=QA&qb=1&as%3As_rawwords=jquery&as%3As_use=ANY&as%3As_freeloc=SAN+FRANCISCO%2C+CA&as%3As_freeloc=&as%3As_freeloc=&as%3As_radius=25&as%3As_freshness=7&as%3AMXJOBSRCHCRITERIA_Industries=&as%3As_jobtypes=ALL&as%3As_jobtypes=ALL&as%3As_jobtypes=ALL&as%3As_education=DRNS&as%3As_includelowereducationvalues=YES&s_includelowereducationvalues_hidden=&as%3As_emptype=JTFT&as%3As_paylow=110&as%3As_payhigh=gt120&as%3Aexkw=ios+ruby+.net+python&as%3Aexjl=&as%3Aexcn=&as%3Aexnt=True&SearchBtn=Find+Jobs',
+                            (body) ->
+                                listings = []
+                                self = @
+                                
+                                body.find('tr.prefRow').each(->
+                                    if $(this).find('.jl_col4').text().indexOf('Relocate') is -1 and $(this).find('.JobListMidAd').length is 0
+                                        listings.push(
+                                            title: $(this).find('.jl_col2 a.prefTitle').text()
+                                            company: $(this).find('.jl_col3 .prefCompany').text()
+                                            link: $(this).find('.jl_col2 a.prefTitle').attr('href')
+                                            time: self.timeParser($(this).find('.jl_col5 span[title]').text())
+                                        )
+                                )
+                                
+                                listings
+                        )
+                        
+                    Craigslist: new JobSite(
+                            'Craigslist',
+                            'http://sfbay.craigslist.org/search/jjj/?query=jquery+%28engineer+|+devleoper%29+-.net+-ios+-rails+-python',
+                            (body) ->
+                                listings = []
+                                self = @
+                                
+                                body.find('p[data-pid]').each(->
+                                    if $(this).find('.hdrlnk').attr('href').indexOf('http') is -1
+                                        listings.push(
+                                            title: $(this).find('.hdrlnk').text()
+                                            company: null
+                                            link: 'http://sfbay.craigslist.org' + $(this).find('.hdrlnk').attr('href')
+                                            time: self.timeParser($(this).find('time').attr('datetime'))
+                                        )
+                                )
+                                
+                                listings
+                        )
+                    
+                    Dice: new JobSite(
+                            'Dice',
+                            'http://www.dice.com/job/results/94121?b=7&caller=advanced&q=jquery&r=10&src=19&v=0&x=all&xj=ios||rails||python||.net&p=z',
+                            (body) ->
+                                listings = []
+                                self = @
+                                
+                                body.find('table.summary tbody tr[class]').each(->
+                                    listings.push(
+                                        title: $(this).find('td:eq(0)').text()
+                                        company: $(this).find('td:eq(1)').text()
+                                        link: 'http://www.dice.com' + $(this).find('td:eq(0) a').attr('href').replace(/\?[\s\S]+$/gi, '')
+                                        time: self.timeParser($(this).find('td:eq(3)').text())
+                                    )
+                                )
+                                
+                                listings
+                        )
+                    
+                    GlassDoor : new JobSite(
+                            'GlassDoor',
+                            'http://www.glassdoor.com/Job/ajax/san-francisco-jquery-jobs-SRCH_IL.0,13_IC1147401_KO14,20.htm?radius=15&fromAge=7&minRating=3.0&jobType=fulltime',
+                            (body) ->
+                                listings = []
+                                self = @
+                                
+                                body.find('.jobScopeWrapper[itemtype="http://schema.org/JobPosting"]').each(->
+                                    listings.push(
+                                        title: $(this).find('a.jobLink').text()
+                                        company: $(this).find('tt.i-emp:first').text()
+                                        link: 'http://www.glassdoor.com' + $(this).find('a.jobLink').attr('href').replace(/&cb=\d+/gi, '').replace(/guid=[0-9a-fA-F]+/gi, 'guid=').replace(/extid=\d+/gi, 'extid=')
+                                        time: self.timeParser($(this).find('.minor').text())
+                                    )
+                                )
+                                
+                                listings
+                        )
+                        
+                    Indeed : new JobSite(
+                            'Indeed',
+                            'http://www.indeed.com/jobs?as_and=jquery&as_phr=&as_any=&as_not=ios+rails+python+.net&as_ttl=&as_cmp=&jt=fulltime&st=&sr=directhire&salary=%24100%2C000%2B&radius=15&l=San+Francisco%2C+CA&fromage=7&limit=10&sort=date&psf=advsrch',
+                            (body) ->
+                                listings = []
+                                self = @
+                                
+                                body.find('div[itemtype="http://schema.org/JobPosting"]').each(->
+                                    listings.push(
+                                        title: $(this).find('a[itemprop="title"]').text()
+                                        company: $(this).find('.company:first').text()
+                                        link: 'http://www.indeed.com' + $(this).find('a[itemprop="title"]').attr('href')
+                                        time: self.timeParser($(this).find('.date').text())
+                                    )
+                                )
+                                
+                                listings
+                        )
+                        
+                    Monster : new JobSite(
+                            'Monster',
+                            'http://jobsearch.monster.com/search/Full-Time_8?tm=Last-7-Days&q=jquery&where=San-Francisco__2c-CA&salmin=100000&saltyp=1&nosal=false',
+                            (body) ->
+                                listings = []
+                                self = @
+                                
+                                body.find('.listingsTable tbody tr[class]').each(->
+                                    listings.push(
+                                        title: $(this).find('a.slJobTitle').text()
+                                        company: $(this).find('.companyContainer a').text()
+                                        link: $(this).find('a.slJobTitle').attr('href')
+                                        time: self.timeParser($(this).find('.fnt20').text())
+                                    )
+                                )
+                                
+                                listings
+                        )
+                        
+                    SanFranJobs : new JobSite(
+                            'SanFranJobs',
+                            'http://www.sanfranjobs.com/jobs.asp?pagemode=13&page=1&pf=1&job_code=-1&category_id=-1&company_id=&job_type_id=3&city_id=-1&location_id_1=3288&location_type_1=C&location_name_1=San%20Francisco,%20CA&location_radius_1=10&location_id_2=&location_type_2=&location_name_2=&location_radius_2=50&location_id_3=&location_type_3=&location_name_3=&location_radius_3=50&domain_id=-1&keywords=jquery&order_by=date%20posted&direction=DESC&date_field=updated&changed=-1&is_staff_provider=-1&degree_id=&experience_years_min=-1&experience_years_max=-1&wage_class=-1&security_clearance_id=-1&co_id_int_list=',
+                            (body) ->
+                                listings = []
+                                self = @
+                                
+                                body.find('.resultsRowTop').each(->
+                                    a = $(this).find('td:eq(1) a').attr('href')
+
+                                    listings.push(
+                                        title: $(this).find('td:eq(1) a').text()
+                                        company: $(this).find('td:eq(2)').text()
+                                        link: a.substring(23,a.length-14)
+                                        time: self.timeParser($(this).find('td:eq(0)').text())
+                                    )
+                                )
+                                
+                                listings
+                        )
+                        
+                    SimplyHired : new JobSite(
+                            'SimplyHired',
+                            'http://www.simplyhired.com/search?q=jquery&l=San+Francisco%2C+CA&mi=15&fjt=full-time&fdb=7&sb=dd&fem=employer',
+                            (body) ->
+                                listings = []
+                                self = @
+                                
+                                body.find('li.result .job').each(->
+                                    listings.push(
+                                        title: $(this).find('a[itemprop="title"]').text()
+                                        company: $(this).find('.company:first').text()
+                                        link: 'http://www.simplyhired.com' + $(this).find('a[itemprop="title"]').attr('href').replace(/rid-.*\//gi, 'rid-/')
+                                        time: self.timeParser($(this).find('.ago').text())
+                                    )
+                                )
+                                
+                                listings
+                        )
+                        
+                    StackOverflow : new JobSite(
+                            'StackOverflow',
+                            'http://careers.stackoverflow.com/jobs?searchTerm=jquery&location=san+francisco&range=20&distanceUnits=Miles&sort=p',
+                            (body) ->
+                                listings = []
+                                self = @
+                                
+                                body.find('div[data-jobid]').each(->
+                                    listings.push(
+                                        title: $(this).find('a.job-link:first').text()
+                                        company: $(this).find('.-employer:first').text()
+                                        link: 'http://careers.stackoverflow.com' + $(this).find('a.job-link:first').attr('href')
+                                        time: self.timeParser($(this).find('.posted').text())
+                                    )
+                                )
+                                
+                                listings
+                        )
+                        
+                    TechCareers : new JobSite(
+                            'TechCareers',
+                            'http://www.techcareers.com/jobs/job-search.asp?k=jquery&l=San%20Francisco%2C%20CA&r=10&s=1&p=',
+                            (body) ->
+                                listings = []
+                                self = @
+                                
+                                body.find('div[data-jobid]').each(->
+                                    listings.push(
+                                        title: $(this).find('a.job-title:first').text()
+                                        company: $(this).find('.job-title-company:first').text()
+                                        link: $(this).find('a.job-title:first').attr('href')
+                                        time: self.timeParser($(this).find('time').attr('datetime'))
+                                    )
+                                )
+                                
+                                listings
+                        )
+                    
+                jobSites.Dice2 = new JobSite('Dice',jobSites.Dice.url+'&o=30',jobSites.Dice.listingsParser)
+                jobSites.SimplyHired2 = new JobSite('SimplyHired',jobSites.SimplyHired.url+'&pn=2',jobSites.SimplyHired.listingsParser)
+                jobSites.SimplyHired3 = new JobSite('SimplyHired',jobSites.SimplyHired.url+'&pn=3',jobSites.SimplyHired.listingsParser)
+                jobSites.SimplyHired4 = new JobSite('SimplyHired',jobSites.SimplyHired.url+'&pn=4',jobSites.SimplyHired.listingsParser)
+                jobSites.TechCareers2 = new JobSite('TechCareers',jobSites.TechCareers.url+'2',jobSites.TechCareers.listingsParser)
+                jobSites.TechCareers3 = new JobSite('TechCareers',jobSites.TechCareers.url+'3',jobSites.TechCareers.listingsParser)
+                
+                $('.boxy').append('<div class="clear"></div>')
+                
+                totalSites = Object.keys(jobSites).length
+                currentSites = 0
+                totalJobs = []
+
+                for k,o of jobSites
+                    o.getListings((response)->
+                        currentSites++
+                        
+                        totalJobs = totalJobs.concat(response)
+                        
+                        if currentSites is totalSites                            
+                            totalJobs = totalJobs
+                            .filter((i)->
+                                if not i.content or i.content is 'false'
+                                    return false
+                                
+                                c = i.content.toLowerCase()
+
+                                startup = /(start-up)|(start\sup)|(startup)/.test(c)
+                                startup = true
+                                badstuff = /(palo\salto)|(oakland)|(sausalito)|(san\sjose)|(redwood\scity)|(emeryville)|(J2EE)|(cq5)|(InfoObjects)|(Sunnyvale)|(mountain\sview)|(hayward)|(salesforce)|(minted)|(lyft)|(sfdc)|(jive)|(bizlol)|(ziprecruiter)|(vircon)|(jsp)|(rails)|(\.net)|(santa clara)|(gliffy)|(\d(\s\+)months)|(ampush)|(jobvite)|(PLOS)|(mateo)|(wordpress)|(foster\scity)|(python)/i.test(c)
+                                console.log(c) if startup and not badstuff and new Date().getTime() - i.time <= 259200000
+                                return startup and not badstuff and new Date().getTime() - i.time <= 259200000
+                            )
+                            .sort((a,b)->
+                                if a.time > b.time then -1 else if a.time < b.time then 1 else 0
+                            )
+
+                            $('.boxy').addClass('list').find('header').html('Job Postings')
+                            $('.boxy').children(':not(header)').remove()
+                            $('.boxy').append('<div class="capped"></div>')
+                            
+                            getDateFormat = (d) ->
+                                days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+                                months = ['January','February','March','April','May','June','July','August','September','October','November','December']
+                                days[d.getDay()]+', '+months[d.getMonth()]+' '+d.getDate()
+                            
+                            for j in totalJobs
+                                c = if j.company?.length then j.company else '???'
+                                $('.capped').append('<p><b><a href="'+j.link+'" target="_blank">'+j.title+'</a></b>&nbsp;&nbsp;&nbsp;&nbsp;('+c+')&nbsp;&nbsp;&nbsp;&nbsp;'+getDateFormat(j.time)+'</p>')
+                            
+                    )
+            )
+        </script>
+    </head>
+    <body>
+        <div class="boxy"><header>Scraping Sites</header></div>
+    
+    </body>
+</html>
