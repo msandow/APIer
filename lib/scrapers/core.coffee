@@ -229,7 +229,9 @@ class ScraperCore
             
             for n in @search.nice
               score += 2 if new RegExp(regex.prefix + utilities.escapeRegExp(n) + regex.suffix, 'gim').test(i.content)
-
+            for n in @search.bad
+              score -= 2 if new RegExp(regex.prefix + utilities.escapeRegExp(n) + regex.suffix, 'gim').test(i.content)
+            
             i.score = score
             
             i
