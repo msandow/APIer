@@ -1,4 +1,3 @@
-CronJob = require('cron').CronJob
 async = require('async')
 util = require(__dirname + '/../lib/utilities.coffee')
 fs = require('fs')
@@ -87,18 +86,12 @@ warmQueue = (cb)->
 module.exports =
   start: (onReady)->
     warmQueue((response)->
-      testJob = new CronJob(
-        cronTime: '00 */30 * * * *'
-        onTick: () ->
-          warmQueue((response)->
-            console.info(response)
-          )
-        start: false
-        timeZone: 'America/Los_Angeles'
-      )
-
       testJob.start()
-      
+      setInterval(()->
+        warmQueue((response)->
+          console.info(response)
+        )
+      , 1000 * 60 * 30)
       onReady()
     )
     
