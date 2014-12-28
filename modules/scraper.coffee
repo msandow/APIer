@@ -9,7 +9,8 @@ ROOT.WARMING = false
 search =
   search: ['javascript','developer']
   negative: ['.net','ios','rails','python','ruby','android', 'salesforce', 'junior', 'mobile', 'wordpress', 'j2ee', 'manager',
-  'java', 'dba', 'consultant', 'plm', 'cq', 'admin', 'analyst', 'contract', 'intern', 'jsp', 'recruiting', 'informatica', 'asp.net']
+  'java', 'dba', 'consultant', 'plm', 'cq', 'admin', 'analyst', 'contract', 'intern', 'jsp', 'recruiting', 'informatica', 'asp.net',
+  'drupal']
   companies: ['cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing',
   'android', 'group', 'ascendify', 'ampush', 'zynga', 'mulesoft', 'mindjet', 'imgur', 'mashape',
   'plastiq', 'humble', 'software', 'weebly', 'zipongo',
