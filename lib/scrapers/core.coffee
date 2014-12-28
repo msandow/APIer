@@ -141,7 +141,7 @@ class ScraperCore
         else
           o = ob(ss)
 
-        return o.text().replace(/\s{2,}|\t|\r|\n|\r\n/g,'')
+        return o.text().replace(/\s{2,}|\t|\r|\n|\r\n/g,' ')
 
     console.warn('Content unable to be parsed for',origin)
 
@@ -211,18 +211,19 @@ class ScraperCore
     @getListingPage((listingErr, listingResponse)=>
       @getListingLinks(listingResponse, (linksErr, linksResponse)=>
         @fetchContent(linksResponse, (objResponse)=>
+          
           exclusive = if @search.negative.length then new RegExp(@search.negative.map((i)->
             regex.prefix + utilities.escapeRegExp(i) + regex.suffix
-          ).join('|').trim(), 'gim') else false
-          
+          ).join('|').trim(), 'im') else false
+
           badCities = if @search.filterLocations.length then new RegExp(@search.filterLocations.map((i)->
             regex.prefix + utilities.escapeRegExp(i) + regex.suffix
-          ).join('|').trim(), 'gim') else false
-
-          objResponse = objResponse.filter((i)=>
-            i.content and
-              (exclusive is false or (not exclusive.test(i.content) and not exclusive.test(i.title))) and
-              (badCities is false or (not badCities.test(i.content)))
+          ).join('|').trim(), 'im') else false
+  
+          objResponse = objResponse.filter((i)->
+            (i.content and
+            (exclusive is false or (exclusive.test(i.content) is false and exclusive.test(i.title) is false)) and
+            (badCities is false or badCities.test(i.content) is false))
           ).map((i)=>
             score = 11
             

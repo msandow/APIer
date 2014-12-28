@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "async": "=0.9.0",    
-    "coffee-script": "=1.7.1",
+    "coffee-script": "=1.8.0",
     "cheerio": "=0.18.0",
     "request": "=2.51.0",
     "hapi": "=8.0.0",
