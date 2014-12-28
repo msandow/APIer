@@ -65,22 +65,32 @@ warmQueue = (cb)->
     maxDirSize = 2.5
     currDirSize = 0
     dir = __dirname + '/../lib/__cache/'
-  
-    fs.readdir(dir, (err, files)->
-      for f in files
-        size = fs.statSync(dir + f).size
-        size = size / 1000000.0
-        if currDirSize < maxDirSize
-          currDirSize += size
-        else
-          fs.unlinkSync(dir + f) 
+    
+    fs.exists(dir, (exists)->
+      if exists
+        fs.readdir(dir, (err, files)->
+          for f in files
+            size = fs.statSync(dir + f).size
+            size = size / 1000000.0
+            if currDirSize < maxDirSize
+              currDirSize += size
+            else
+              fs.unlinkSync(dir + f) 
 
-      ROOT.WARMING = true
-      async.series(warmqueue,
-      (err, response)->
-        ROOT.WARMING = false
-        cb(err or response)
-      )
+          ROOT.WARMING = true
+          async.series(warmqueue,
+          (err, response)->
+            ROOT.WARMING = false
+            cb(err or response)
+          )
+        )
+      else
+        ROOT.WARMING = true
+        async.series(warmqueue,
+        (err, response)->
+          ROOT.WARMING = false
+          cb(err or response)
+        )
     )
 
 module.exports =
