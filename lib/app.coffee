@@ -4,7 +4,7 @@ fs = require('fs')
 console = require(__dirname + '/console.coffee')
 scraper = require(__dirname + '/../modules/scraper.coffee')
 server = new hapi.Server()
-server.connection({ port: 8000 })
+server.connection({ port: process.env.PORT or 3000 })
 dateFormat = (d)->
   days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
   months = ['January','February','March','April','May','June','July','August','September','October','November','December']
