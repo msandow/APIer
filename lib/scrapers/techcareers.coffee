@@ -32,7 +32,7 @@ module.exports = () ->
       dom('.job[data-jobid]').each(->
         listings.push(new obj(
             dom(@).find('h2.theme-primary-link-color').text(),
-            dom(@).find('.job-title-company span').text(),
+            dom(@).find('.job-title-company span').eq(0).text(),
             dom(@).find('a[itemprop="url"]').attr('href'),
             self.timeParser(dom(@).find('time[itemprop="datePosted"]').text())
           )

@@ -1,60 +1,42 @@
-CronJob = require('cron').CronJob
-async = require('async')
-util = require('./utilities.coffee')
+hapi = require('hapi')
+less = require('less')
 fs = require('fs')
+console = require(__dirname + '/console.coffee')
+scraper = require(__dirname + '/../modules/scraper.coffee')
+server = new hapi.Server()
+server.connection({ port: 8000 })
+dateFormat = (d)->
+  days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+  months = ['January','February','March','April','May','June','July','August','September','October','November','December']
+  days[d.getDay()]+', '+months[d.getMonth()]+' '+d.getDate()
 
-search =
-  search: ['developer']
-  negative: ['.net','ios','rails','python','ruby','android', 'salesforce', 'junior', 'mobile', 'wordpress', 'j2ee', 'manager', 'dba', 'consultant']
-  companies: ['cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing',
-  'android', 'group', 'ascendify', 'ampush', 'zynga', 'mulesoft', 'mindjet', 'imgur', 'mashape',
-  'plastiq', 'humble', 'software', 'weebly', 'zipongo',
-  'hellosign', '5th finger','lynda','balluun','capital one', 'infoobjects', 'bizlol', 'minted',
-  'ziprecruiter', 'vircon', 'gliffy', 'ampush', 'gliffy', 'jobvite']
-  location: 'san francisco'
-  filterLocations: ['palo alto', 'oakland', 'sausalito', 'san jose', 'redwood city', 'emeryville',
-  'moutain view', 'hayward', 'sunnyvale', 'santa clara', 'san mateo', 'foster city']
-  days: 3
+server.route(
+  method: 'GET',
+  path:'/', 
+  handler: (request, reply)->
+    scraper.fetch((posts)->
+      fs.readFile(__dirname + '/../public/index.html', (err, data)->
+        html = ''
+        for i in posts
+          html += '<p style="font-size:'+i.score+'px;"><b><a href="'+i.link+'" target="_blank">'+i.title+'</a></b>&nbsp;&nbsp;&nbsp;&nbsp;('+i.company+')&nbsp;&nbsp;&nbsp;&nbsp;'+dateFormat(i.time)+'&nbsp;&nbsp;&nbsp;&nbsp;'+(if i.company isnt '??' then '<a href="http://www.glassdoor.com/Reviews/'+i.company.replace(/\s/g, '-')+'-reviews-SRCH_KE0,6.htm" target="_blank">Glassdoor</a>' else '')+'&nbsp;&nbsp;&nbsp;&nbsp;<i>'+i.positionHash+'</i></p>'
+        reply(data.toString().replace(/\{\{content\}\}/gim, html)).type('text/html')
+      )
+    )
+)
 
-mySearch = require(__dirname + '/searchObject.coffee')(search)
-
-queue = []
-
-fs.readdirSync(__dirname + '/scrapers/').forEach((file)->
-  if file isnt 'core.coffee'
-    tr = require(__dirname + '/scrapers/' + file)()
-    tr.setSearch(mySearch)
-    
-    queue.push((done)->
-      tr.fetch(done)
+server.route(
+  method: 'GET',
+  path:'/site.css', 
+  handler: (request, reply)->
+    fs.readFile(__dirname + '/../public/site.less', (err, data)->
+      less.render(data.toString(), (e, output)->
+        reply(output.css).type('text/css')
+      )
     )
 )
 
 module.exports = () ->
-
-#  testJob = new CronJob(
-#    cronTime: '00 */1 * * * *'
-#    onTick: () ->
-#      console.log(new Date().getTime())
-#    start: false
-#    timeZone: 'America/Los_Angeles'
-#  )
-#  
-#  testJob.start()
-  
-  async.series(queue,
-  (err, response)->
-    merged = []
-    for r in response
-      merged = util.merge(merged, r)
-
-    merged = util.uniqueObjsBy(merged, 'positionHash').sort((a, b)->
-      return  1 if a.time < b.time
-      return -1 if a.time > b.time
-      return  1 if a.title > b.title
-      return -1 if a.title < b.title
-      return 0
-    )
-
-    console.log(merged.length)
+  scraper.start(()->
+    console.info('Server started')
+    server.start()
   )

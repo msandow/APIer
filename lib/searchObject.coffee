@@ -6,6 +6,8 @@ module.exports = (conf) ->
     negative: conf.negative or []
     companies: conf.companies or []
     filterLocations: conf.filterLocations or []
+    nice: conf.nice or []
+    blacklist: conf.blacklist or []
   }
 
 

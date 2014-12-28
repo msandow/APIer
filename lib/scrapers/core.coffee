@@ -133,7 +133,7 @@ class ScraperCore
     map
 
   contentParser: (ob, origin) =>
-    for s in ['#pnlJobDescription', '#job_body_box', '.pjb-box-inner:first', 'section.userbody', '.dc_content', '#detailDescription', '.jobdetail', '.detail:first', '.job_description', '.jobDescriptionContent', '.jvdescriptionbody', '#js-job-description', '#content', '.des_content', '.description-section', '#lbljobdesc', '.iCIMS_JobPage', '.content:first', '#job_summary', '.ftlrow .editablesection', '.job-details', '.jobDetailContent', '#jobDesciptionDiv', '#jobcopy', '#job_desc', 'table[role="presentation"]', '.iCIMS_JobPage', '.fixedwidthJobPosting']
+    for s in ['#pnlJobDescription', '#job_body_box', '.pjb-box-inner:first', 'section.userbody', '.dc_content', '#detailDescription', '.jobdetail', '.detail:first', '.job_description', '.jobDescriptionContent', '.jvdescriptionbody', '#js-job-description', '#content', '.des_content', '.description-section', '#lbljobdesc', '.jobDesc', '.iCIMS_JobPage', '.content:first', '#job_summary', '.ftlrow .editablesection', '.job-details', '.jobDetailContent', '#jobDesciptionDiv', '#jobcopy', '#job_desc', 'table[role="presentation"]', '.iCIMS_JobPage', '.fixedwidthJobPosting', '.jobs-content']
       ss = s.replace(':first','')
       if ob(ss).length
         if s.indexOf(':first') > -1
@@ -170,7 +170,7 @@ class ScraperCore
 
     d.getTime() - c.time <= (@search.days * 86400000) and
     (not companies or c.company is '??' or not companies.test(c.company)) and
-    c.link isnt '??'
+    c.link isnt '??' and @search.blacklist.indexOf(c.positionHash) is -1
   
   getListingLinks: (listingPage, cb)->
     dom = listingPage.responseObj
@@ -196,6 +196,9 @@ class ScraperCore
   warm: (cb)->
     cache.clear(@buildListingPageURL(),()=>
       @getListingPage((listingErr, listingResponse)=>
+        if listingErr
+          cb(true, true)
+          return
         @getListingLinks(listingResponse, (linksErr, linksResponse)=>
           @fetchContent(linksResponse, (objResponse)->
             cb(null, true)
@@ -216,11 +219,22 @@ class ScraperCore
             regex.prefix + utilities.escapeRegExp(i) + regex.suffix
           ).join('|').trim(), 'gim') else false
 
-          done(null, objResponse.filter((i)=>
+          objResponse = objResponse.filter((i)=>
             i.content and
               (exclusive is false or (not exclusive.test(i.content) and not exclusive.test(i.title))) and
               (badCities is false or (not badCities.test(i.content)))
-          ))
+          ).map((i)=>
+            score = 11
+            
+            for n in @search.nice
+              score += 2 if new RegExp(regex.prefix + utilities.escapeRegExp(n) + regex.suffix, 'gim').test(i.content)
+
+            i.score = score
+            
+            i
+          )
+
+          done(null, objResponse)
         )
       )
     )

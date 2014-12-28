@@ -11,11 +11,11 @@ module.exports = () ->
     listingParser: (dom)->
       listings = []
       self = this
-      
+
       dom('.listingsTable tbody tr[class]').each(->
         listings.push(new obj(
             dom(@).find('a.slJobTitle').text(),
-            dom(@).find('.companyContainer a').text(),
+            dom(@).find('.companyContainer a').last().text(),
             dom(@).find('a.slJobTitle').attr('href'),
             self.timeParser(dom(@).find('.fnt20').text())
           )

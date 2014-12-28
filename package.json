@@ -7,7 +7,9 @@
     "coffee-script": "=1.7.1",
     "node-cron": "git+ssh://git@github.com:ncb000gt/node-cron.git",
     "cheerio": "=0.18.0",
-    "request": "=2.51.0"
+    "request": "=2.51.0",
+    "hapi": "=8.0.0",
+    "less": "=2.1.2"
   },
   "devDependencies": {
     "mocha": "=2.0.1",
