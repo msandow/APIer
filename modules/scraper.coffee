@@ -96,7 +96,6 @@ warmQueue = (cb)->
 module.exports =
   start: (onReady)->
     warmQueue((response)->
-      testJob.start()
       setInterval(()->
         warmQueue((response)->
           console.info(response)
