@@ -7,7 +7,7 @@ class glassdoorParser extends core
 
 module.exports = () ->
   new glassdoorParser(
-    listingURL: 'http://www.glassdoor.com/Job/ajax/{{location}}-{{search}}-jobs-SRCH_IL.0,13_IC1147401_KO14,34.htm?radius=25&fromAge=-1&minRating=3.0&jobType=all&brandedAO=0'
+    listingURL: 'http://www.glassdoor.com/Job/ajax/{{location}}-{{search}}-jobs-SRCH_IL.0,13_IC1147401_KO14,34.htm?radius=25&fromAge=7&minRating=3.0&jobType=all&brandedAO=0'
     listingParser: (dom)->
       listings = []
       self = this
