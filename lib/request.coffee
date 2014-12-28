@@ -37,9 +37,9 @@ module.exports =
     cb(null, 
       responseObj: do () ->
         isJson = utilities.isJSONString(response.body)
-        isHtml = response.headers['content-type'].indexOf('text/html') > -1 or
-          response.headers['content-type'].indexOf('text/xml') > -1 or
-          response.headers['content-type'].indexOf('+xml') > -1
+        isHtml = response.headers['content-type']?.indexOf('text/html') > -1 or
+          response.headers['content-type']?.indexOf('text/xml') > -1 or
+          response.headers['content-type']?.indexOf('+xml') > -1
         
         return JSON.parse(response.body) if isJson
         return htmlBodyParse(response.body, parsed) if isHtml
