@@ -78,6 +78,7 @@ module.exports =
           formData: if _postdata then _postdata else false
           gzip: true
           jar: jar
+          timeout: 5000
           ,
           (error, response, body) ->
             if error
