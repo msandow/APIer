@@ -11,17 +11,16 @@ search =
   negative: ['.net','ios','rails','python','ruby','android', 'salesforce', 'junior', 'mobile', 'wordpress', 'j2ee', 'manager',
   'java', 'dba', 'consultant', 'plm', 'cq', 'admin', 'analyst', 'contract', 'intern', 'jsp', 'recruiting', 'informatica', 'asp.net',
   'drupal', 'netezza', 'teradata']
-  companies: ['cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing',
-  'android', 'group', 'ascendify', 'ampush', 'zynga', 'mulesoft', 'mindjet', 'imgur', 'mashape',
+  companies: ['android', 'group', 'ascendify', 'ampush', 'zynga', 'mulesoft', 'mindjet', 'imgur', 'mashape',
   'plastiq', 'humble', 'software', 'weebly', 'zipongo',
   'hellosign', '5th finger','lynda','balluun','capital one', 'infoobjects', 'bizlol', 'minted',
-  'ziprecruiter', 'vircon', 'gliffy', 'ampush', 'gliffy', 'jobvite', 'tellapart', 'beyondsoft', 'technologies', 'recruiting',
-  'corvisacloud', 'drishticon', 'quardev', 'osi', 'twilio', 'deegit', 'moodys', 'ideahelix', 'employment', 
+  'gliffy', 'corvisacloud', 'drishticon', 'quardev', 'osi', 'twilio', 'deegit', 'moodys', 'ideahelix', 'employment', 
   'macys', 'macy\'s']
+  #'cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing', 'vircon', 'ziprecruiter', 'ampush', 'jobvite', 'tellapart', 'beyondsoft', 'technologies', 'recruiting'
   location: 'san francisco'
   filterLocations: ['palo alto', 'oakland', 'sausalito', 'san jose', 'redwood city', 'emeryville',
   'moutain view', 'hayward', 'sunnyvale', 'santa clara', 'san mateo', 'foster city', 'south san francisco']
-  days: 3
+  days: 2
   nice: ['coffee', 'independent', 'salary', 'generious', 'fun', 'fast', 'catered', 'small', 'beer', 'node', 'php']
   bad: ['angular', 'angularjs', '8+', '8 years', 'agile']
   blacklist: ['8d373576dc21863292893f74b17edfde','9fb7134702ad2a26cc3b2609b87d2d51','821767ca685bf82a7d521f8671321c46',
