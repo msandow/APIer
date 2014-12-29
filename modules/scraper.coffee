@@ -16,7 +16,8 @@ search =
   'plastiq', 'humble', 'software', 'weebly', 'zipongo',
   'hellosign', '5th finger','lynda','balluun','capital one', 'infoobjects', 'bizlol', 'minted',
   'ziprecruiter', 'vircon', 'gliffy', 'ampush', 'gliffy', 'jobvite', 'tellapart', 'beyondsoft', 'technologies', 'recruiting',
-  'corvisacloud', 'drishticon', 'quardev', 'osi', 'twilio', 'deegit', 'moodys', 'ideahelix']
+  'corvisacloud', 'drishticon', 'quardev', 'osi', 'twilio', 'deegit', 'moodys', 'ideahelix', 'employment', 
+  'macys', 'macy\'s']
   location: 'san francisco'
   filterLocations: ['palo alto', 'oakland', 'sausalito', 'san jose', 'redwood city', 'emeryville',
   'moutain view', 'hayward', 'sunnyvale', 'santa clara', 'san mateo', 'foster city', 'south san francisco']
