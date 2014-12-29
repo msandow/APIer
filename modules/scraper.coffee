@@ -68,6 +68,16 @@ fetchQueue = (cb)->
 
 warmQueue = (cb)->
   if not ROOT.WARMING
+    ROOT.WARMING = true
+    async.series(warmqueue,
+    (err, response)->
+      ROOT.WARMING = false
+      console.log('Cache warm')
+      cb(err or response)
+    )
+
+module.exports =
+  start: (onReady)->
     maxDirSize = 0
     currDirSize = 0
     dir = __dirname + '/../lib/__cache/'
@@ -83,32 +93,22 @@ warmQueue = (cb)->
             else
               fs.unlinkSync(dir + f) 
 
-          ROOT.WARMING = true
-          async.series(warmqueue,
-          (err, response)->
-            ROOT.WARMING = false
-            console.log('Cache warm')
-            cb(err or response)
+          warmQueue((response)->
+            setInterval(()->
+              warmQueue((response)->
+                console.info(response)
+              )
+            , 1000 * 60 * 30)
           )
         )
       else
-        ROOT.WARMING = true
-        async.series(warmqueue,
-        (err, response)->
-          ROOT.WARMING = false
-          console.log('Cache warm')
-          cb(err or response)
-        )
-    )
-
-module.exports =
-  start: (onReady)->
-    warmQueue((response)->
-      setInterval(()->
         warmQueue((response)->
-          console.info(response)
+          setInterval(()->
+            warmQueue((response)->
+              console.info(response)
+            )
+          , 1000 * 60 * 30)
         )
-      , 1000 * 60 * 30)
     )
     
     onReady()
