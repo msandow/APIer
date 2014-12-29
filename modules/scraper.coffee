@@ -10,7 +10,7 @@ search =
   search: ['javascript','developer']
   negative: ['.net','ios','rails','python','ruby','android', 'salesforce', 'junior', 'mobile', 'wordpress', 'j2ee', 'manager',
   'java', 'dba', 'consultant', 'plm', 'cq', 'admin', 'analyst', 'contract', 'intern', 'jsp', 'recruiting', 'informatica', 'asp.net',
-  'drupal']
+  'drupal', 'netezza', 'teradata']
   companies: ['cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing',
   'android', 'group', 'ascendify', 'ampush', 'zynga', 'mulesoft', 'mindjet', 'imgur', 'mashape',
   'plastiq', 'humble', 'software', 'weebly', 'zipongo',
@@ -46,22 +46,25 @@ fs.readdirSync(__dirname + '/../lib/scrapers/').forEach((file)->
 )
 
 fetchQueue = (cb)->
-  async.series(fetchqueue,
-  (err, response)->
-    merged = []
-    for r in response
-      merged = util.merge(merged, r)
+  if not ROOT.WARMING
+    async.series(fetchqueue,
+    (err, response)->
+      merged = []
+      for r in response
+        merged = util.merge(merged, r)
 
-    merged = util.uniqueObjsBy(merged, 'positionHash').sort((a, b)->
-      return  1 if a.time < b.time
-      return -1 if a.time > b.time
-      return  1 if a.title > b.title
-      return -1 if a.title < b.title
-      return 0
+      merged = util.uniqueObjsBy(merged, 'positionHash').sort((a, b)->
+        return  1 if a.time < b.time
+        return -1 if a.time > b.time
+        return  1 if a.title > b.title
+        return -1 if a.title < b.title
+        return 0
+      )
+
+      cb(merged)
     )
-
-    cb(merged)
-  )
+  else
+    cb([])
 
 warmQueue = (cb)->
   if not ROOT.WARMING
@@ -84,6 +87,7 @@ warmQueue = (cb)->
           async.series(warmqueue,
           (err, response)->
             ROOT.WARMING = false
+            console.log('Cache warm')
             cb(err or response)
           )
         )
@@ -92,6 +96,7 @@ warmQueue = (cb)->
         async.series(warmqueue,
         (err, response)->
           ROOT.WARMING = false
+          console.log('Cache warm')
           cb(err or response)
         )
     )
@@ -104,8 +109,9 @@ module.exports =
           console.info(response)
         )
       , 1000 * 60 * 30)
-      onReady()
     )
+    
+    onReady()
     
   fetch: (done)->
     fetchQueue(done)
