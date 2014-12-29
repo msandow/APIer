@@ -174,8 +174,11 @@ class ScraperCore
   
   getListingLinks: (listingPage, cb)->
     dom = listingPage.responseObj
-    collection = @listingParser(dom).filter(@listingFilter)
-    cb(null, collection)
+    if typeof dom is 'object'
+      collection = @listingParser(dom).filter(@listingFilter)
+      cb(null, collection)
+    else
+      cb(null, [])
     
   fetchContent: (links, cb)->
     self = this

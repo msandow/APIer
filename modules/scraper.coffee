@@ -68,7 +68,7 @@ fetchQueue = (cb)->
 
 warmQueue = (cb)->
   if not ROOT.WARMING
-    maxDirSize = 2.5
+    maxDirSize = 0
     currDirSize = 0
     dir = __dirname + '/../lib/__cache/'
     
