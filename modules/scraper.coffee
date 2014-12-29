@@ -15,7 +15,7 @@ search =
   'plastiq', 'humble', 'software', 'weebly', 'zipongo',
   'hellosign', '5th finger','lynda','balluun','capital one', 'infoobjects', 'bizlol', 'minted',
   'gliffy', 'corvisacloud', 'drishticon', 'quardev', 'osi', 'twilio', 'deegit', 'moodys', 'ideahelix', 'employment', 
-  'macys', 'macy\'s']
+  'macys', 'macy\'s', 'insight global']
   #'cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing', 'vircon', 'ziprecruiter', 'ampush', 'jobvite', 'tellapart', 'beyondsoft', 'technologies', 'recruiting'
   location: 'san francisco'
   filterLocations: ['palo alto', 'oakland', 'sausalito', 'san jose', 'redwood city', 'emeryville',
@@ -25,7 +25,8 @@ search =
   'start-up', 'start up']
   bad: ['angular', 'angularjs', '8+', '8 years', 'agile', 'angular.js']
   blacklist: ['8d373576dc21863292893f74b17edfde','9fb7134702ad2a26cc3b2609b87d2d51','821767ca685bf82a7d521f8671321c46',
-  'd5ab900a69016832dbe63c85607aa894', '26875fbfa040f5709eb8a790965b3513','08a274bcdd7bfa44959e7891fb7e2f2d']
+  'd5ab900a69016832dbe63c85607aa894', '26875fbfa040f5709eb8a790965b3513','08a274bcdd7bfa44959e7891fb7e2f2d',
+  '6ff729deef03696ca676c29eca91a99d']
 
 mySearch = require(__dirname + '/../lib/searchObject.coffee')(search)
 
