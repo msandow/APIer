@@ -174,7 +174,7 @@ class ScraperCore
   
   getListingLinks: (listingPage, cb)->
     dom = listingPage.responseObj
-    if typeof dom is 'object'
+    if typeof dom is 'function'
       collection = @listingParser(dom).filter(@listingFilter)
       cb(null, collection)
     else
