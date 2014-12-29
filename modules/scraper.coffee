@@ -21,8 +21,9 @@ search =
   filterLocations: ['palo alto', 'oakland', 'sausalito', 'san jose', 'redwood city', 'emeryville',
   'moutain view', 'hayward', 'sunnyvale', 'santa clara', 'san mateo', 'foster city', 'south san francisco']
   days: 2
-  nice: ['coffee', 'independent', 'salary', 'generious', 'fun', 'fast', 'catered', 'small', 'beer', 'node', 'php']
-  bad: ['angular', 'angularjs', '8+', '8 years', 'agile']
+  nice: ['coffee', 'independent', 'salary', 'generious', 'fun', 'fast', 'catered', 'small', 'beer', 'node', 'php', 'startup',
+  'start-up', 'start up']
+  bad: ['angular', 'angularjs', '8+', '8 years', 'agile', 'angular.js']
   blacklist: ['8d373576dc21863292893f74b17edfde','9fb7134702ad2a26cc3b2609b87d2d51','821767ca685bf82a7d521f8671321c46',
   'd5ab900a69016832dbe63c85607aa894', '26875fbfa040f5709eb8a790965b3513','08a274bcdd7bfa44959e7891fb7e2f2d']
 
