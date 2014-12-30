@@ -1,6 +1,7 @@
 hapi = require('hapi')
 less = require('less')
 fs = require('fs')
+request = require('request')
 console = require(__dirname + '/console.coffee')
 scraper = require(__dirname + '/../modules/scraper.coffee')
 server = new hapi.Server()
@@ -41,3 +42,10 @@ module.exports = () ->
     console.info('Server started')
     server.start()
   )
+  
+  setInterval(()->
+    request({
+      url: 'https://protected-tor-4447.herokuapp.com/'
+      method: 'HEAD'
+    },()->true)
+  ,1000 * 60)
