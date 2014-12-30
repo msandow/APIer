@@ -3,6 +3,8 @@ util = require(__dirname + '/../lib/utilities.coffee')
 fs = require('fs')
 console = require(__dirname + '/../lib/console.coffee')
 
+process.env.TZ = 'America/Los Angeles'
+
 ROOT = exports ? this
 ROOT.WARMING = false
 
@@ -26,7 +28,7 @@ search =
   bad: ['angular', 'angularjs', '8+', '8 years', 'agile', 'angular.js']
   blacklist: ['8d373576dc21863292893f74b17edfde','9fb7134702ad2a26cc3b2609b87d2d51','821767ca685bf82a7d521f8671321c46',
   'd5ab900a69016832dbe63c85607aa894', '26875fbfa040f5709eb8a790965b3513','08a274bcdd7bfa44959e7891fb7e2f2d',
-  '6ff729deef03696ca676c29eca91a99d']
+  '6ff729deef03696ca676c29eca91a99d', 'bc5c494de8facfa0c07cdc391c397c74']
 
 mySearch = require(__dirname + '/../lib/searchObject.coffee')(search)
 
