@@ -9,7 +9,7 @@ server.connection({ port: process.env.PORT or 3000 })
 dateFormat = (d)->
   days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
   months = ['January','February','March','April','May','June','July','August','September','October','November','December']
-  days[d.getDay()]+', '+months[d.getMonth()]+' '+d.getDate()
+  days[d.getDay()]+', '+months[d.getMonth()]+' '+d.getDate()+' '+d.getHours()+':'+d.getMinutes()
 
 server.route(
   method: 'GET',
