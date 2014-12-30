@@ -21,7 +21,7 @@ server.route(
         for i in posts
           html += '<p style="font-size:'+i.score+'px;"><b><a href="'+i.link+'" target="_blank">'+i.title+'</a></b>&nbsp;&nbsp;&nbsp;&nbsp;('+i.company+')&nbsp;&nbsp;&nbsp;&nbsp;'+dateFormat(i.time)+'&nbsp;&nbsp;&nbsp;&nbsp;'+(if i.company isnt '??' then '<a href="http://www.glassdoor.com/Reviews/'+i.company.replace(/\s/g, '-')+'-reviews-SRCH_KE0,6.htm" target="_blank">Glassdoor</a>' else '')+'&nbsp;&nbsp;&nbsp;&nbsp;<i>'+i.positionHash+'</i></p>'
           html += '<!-- '+(i.content or '')+' -->'
-        reply(data.toString().replace(/\{\{content\}\}/gim, html)).type('text/html')
+        reply(data.toString().replace(/\{\{content\}\}/gim, html).replace(/\{\{date\}\}/gim, dateFormat(scraper.lastUpdated))).type('text/html')
       )
     )
 )

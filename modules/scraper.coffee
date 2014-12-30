@@ -81,7 +81,9 @@ warmQueue = (cb)->
     )
 
 module.exports =
+  lastUpdated: new Date(), 
   start: (onReady)->
+    self = this
     maxDirSize = 0
     currDirSize = 0
     dir = __dirname + '/../lib/__cache/'
@@ -101,6 +103,7 @@ module.exports =
             setInterval(()->
               warmQueue((response)->
                 console.info(response)
+                self.lastUpdated = new Date()
               )
             , 1000 * 60 * 30)
           )
@@ -110,6 +113,7 @@ module.exports =
           setInterval(()->
             warmQueue((response)->
               console.info(response)
+              self.lastUpdated = new Date()
             )
           , 1000 * 60 * 30)
         )
