@@ -48,4 +48,4 @@ module.exports = () ->
       url: 'https://protected-tor-4447.herokuapp.com/'
       method: 'HEAD'
     },()->true)
-  ,1000 * 60)
+  ,1000 * 60 * 30)
