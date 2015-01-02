@@ -30,7 +30,8 @@ search =
   '5619532fd28d87cd66112a999f5c1573', '9843dfe483a786eacee693f16e18bf15',
   '1002b05137f45848b4e00e8c9bf3af14', 'c744eb61101ed3fa5e1d6bb997c88964','38301a2cbef96bdf63e1c07a4ccceee8',
   'e5ba4b423775959223e3144f73b633fa', '407eecf081b9f16ddfd92c84eafc0660', 'c447dc52b29e51940609a805d34bcd14',
-  'd5f1377b8ee9d6c53a9401bcf2e57bf4', 'f86dc3fa0a73649823d3e075ca9f04e0']
+  'd5f1377b8ee9d6c53a9401bcf2e57bf4', 'f86dc3fa0a73649823d3e075ca9f04e0', 'f7e5dcb6d1be6dfe44c7dff5f76997cc',
+  '5c18c302fa8f1e53d6dbd115b67583cd']
 
 mySearch = require(__dirname + '/../lib/searchObject.coffee')(search)
 
