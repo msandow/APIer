@@ -21,7 +21,7 @@ search =
   #'cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing', 'vircon', 'ziprecruiter', 'ampush', 'jobvite', 'beyondsoft', 'technologies', 'recruiting'
   location: 'san francisco'
   filterLocations: ['palo alto', 'oakland', 'sausalito', 'san jose', 'redwood city', 'emeryville', 'menlo park', 'san carlos',
-  'moutain view', 'hayward', 'sunnyvale', 'santa clara', 'san mateo', 'foster city', 'south san francisco', 'burlingame']
+  'moutain view', 'hayward', 'sunnyvale', 'santa clara', 'san mateo', 'foster city', 'south san francisco', 'burlingame', 'san rafael']
   days: 1
   nice: ['coffee', 'independent', 'salary', 'generious', 'fun', 'fast', 'catered', 'small', 'beer', 'node', 'php', 'startup',
   'start-up', 'start up']
@@ -33,7 +33,8 @@ search =
   'e5ba4b423775959223e3144f73b633fa', '407eecf081b9f16ddfd92c84eafc0660', 'c447dc52b29e51940609a805d34bcd14',
   'd5f1377b8ee9d6c53a9401bcf2e57bf4', 'f86dc3fa0a73649823d3e075ca9f04e0', 'f7e5dcb6d1be6dfe44c7dff5f76997cc',
   '5c18c302fa8f1e53d6dbd115b67583cd', 'b3c52a9fb4d3304e0446a9651e3954af', '7e70a1e6915ac2698e07eff38a519332',
-  'ec3185f4e91ed3975aa680a2c60f9f27']
+  'ec3185f4e91ed3975aa680a2c60f9f27', 'a78bf388a930bbbbace1b5fcc2dd81c1', '352412fd827d7ab0598640d6a86eb097',
+  '72885c1c0d85a021aafbc0ae91554b20']
 
 mySearch = require(__dirname + '/../lib/searchObject.coffee')(search)
 
