@@ -21,10 +21,11 @@ search =
   #'cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing', 'vircon', 'ziprecruiter', 'ampush', 'jobvite', 'beyondsoft', 'technologies', 'recruiting'
   location: 'san francisco'
   filterLocations: ['palo alto', 'oakland', 'sausalito', 'san jose', 'redwood city', 'emeryville', 'menlo park', 'san carlos',
-  'moutain view', 'hayward', 'sunnyvale', 'santa clara', 'san mateo', 'foster city', 'south san francisco', 'burlingame', 'san rafael']
+  'moutain view', 'hayward', 'sunnyvale', 'santa clara', 'san mateo', 'foster city', 'south san francisco', 'burlingame', 'san rafael',
+  'san bruno']
   days: 1
   nice: ['coffee', 'independent', 'salary', 'generious', 'fun', 'fast', 'catered', 'small', 'beer', 'node', 'php', 'startup',
-  'start-up', 'start up']
+  'start-up', 'start up', 'travel', 'europe']
   bad: ['angular', 'angularjs', '8+', '8 years', 'agile', 'angular.js', 'advertising', 'symfony', 'CS fundamentals', 'education',
   'marketing', 'a/b testing']
   blacklist: ['95089f925e902c47d3a4a770db16f2c7', '9f0119cc666c06d8fe73fd9d9a988604', 'ef51444816437535807311eee370758d',
