@@ -3,7 +3,7 @@ util = require(__dirname + '/../lib/utilities.coffee')
 fs = require('fs')
 console = require(__dirname + '/../lib/console.coffee')
 
-process.env.TZ = 'America/Los Angeles'
+process.env.TZ = 'America/Los_Angeles'
 
 ROOT = exports ? this
 ROOT.WARMING = false
