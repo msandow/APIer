@@ -17,7 +17,8 @@ search =
   'plastiq', 'humble', 'software', 'weebly', 'zipongo',
   'hellosign', '5th finger','lynda','balluun','capital one', 'infoobjects', 'bizlol', 'minted',
   'gliffy', 'corvisacloud', 'drishticon', 'quardev', 'osi', 'twilio', 'deegit', 'moodys', 'ideahelix', 'employment', 
-  'macys', 'macy\'s', 'insight global', 'tellapart', 'continuum', 'tokbox', 'peanut labs', 'buffer', 'celtra', 'opentable']
+  'macys', 'macy\'s', 'insight global', 'tellapart', 'continuum', 'tokbox', 'peanut labs', 'buffer', 'celtra', 'opentable',
+  'stumbleupon']
   #'cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing', 'vircon', 'ziprecruiter', 'ampush', 'jobvite', 'beyondsoft', 'technologies', 'recruiting'
   location: 'san francisco'
   filterLocations: ['palo alto', 'oakland', 'sausalito', 'san jose', 'redwood city', 'emeryville', 'menlo park', 'san carlos',
@@ -34,7 +35,7 @@ search =
   'ec3185f4e91ed3975aa680a2c60f9f27', 'a78bf388a930bbbbace1b5fcc2dd81c1', '352412fd827d7ab0598640d6a86eb097',
   '72885c1c0d85a021aafbc0ae91554b20', '533847d8128dbc3c60a1e91293c543e0', '4dcc6d7fa189a6ff8f12a80601515923',
   'c9ed7c2a7d6beae50a6169bffc27468f', '01fc7523f53c620b19c79a7be547e143', 'eee89a790a33e3bc0c35b55ebedec1f0',
-  '49ca5b4acccfac004d6e6c5c2a4d5459', '3b4f1f53e11db07e8d0872cb845430d9']
+  '49ca5b4acccfac004d6e6c5c2a4d5459', '3b4f1f53e11db07e8d0872cb845430d9', '2318a4e2a4823cb767d55744917dcd19']
 
 mySearch = require(__dirname + '/../lib/searchObject.coffee')(search)
 
