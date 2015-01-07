@@ -31,7 +31,7 @@ class ScraperCore
     map.setSeconds(0)
     map.setMilliseconds(0)
 
-    if /^\d+\sday/.test(str)
+    if /^\d+(\+*)\sday/.test(str)
       i = parseInt(str)
       map.setDate(curr.getDate()-i)
     else if /\d{4}-\d{1,2}-\d{1,2}\s\d+/.test(str)
