@@ -168,7 +168,7 @@ class ScraperCore
       regex.prefix + utilities.escapeRegExp(i) + regex.suffix
     ).join('|').trim(), 'gi') else false
 
-    d.getTime() - c.time <= (@search.days * 86400000) and
+    d.getTime() - c.time.getTime() <= (@search.days * 86400000) and
     (not companies or c.company is '??' or not companies.test(c.company)) and
     c.link isnt '??' and @search.blacklist.indexOf(c.positionHash) is -1
   

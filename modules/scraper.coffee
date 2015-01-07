@@ -19,7 +19,7 @@ search =
   'gliffy', 'corvisacloud', 'drishticon', 'quardev', 'osi', 'twilio', 'deegit', 'moodys', 'ideahelix', 'employment', 
   'macys', 'macy\'s', 'insight global', 'tellapart', 'continuum', 'tokbox', 'peanut labs', 'buffer', 'celtra', 'opentable',
   'stumbleupon',
-  'cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing', 'vircon', 'ziprecruiter', 'ampush', 'jobvite', 'beyondsoft', 'technologies', 'recruiting']
+  'cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing', 'vircon', 'ziprecruiter', 'ampush', 'jobvite', 'beyondsoft', 'technologies', 'recruiting', 'diverse lynx']
   #
   location: 'san francisco'
   filterLocations: ['palo alto', 'oakland', 'sausalito', 'san jose', 'redwood city', 'emeryville', 'menlo park', 'san carlos',
