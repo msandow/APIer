@@ -12,7 +12,7 @@ search =
   search: ['javascript','developer']
   negative: ['.net','ios','rails','python','ruby','android', 'salesforce', 'junior', 'wordpress', 'j2ee', 'manager',
   'java', 'dba', 'consultant', 'plm', 'cq', 'admin', 'analyst', 'contract', 'intern', 'jsp', 'recruiting', 'informatica', 'asp.net',
-  'drupal', 'netezza', 'teradata', 'django', 'haskell', 'smarty', 'designer', 'opencl']
+  'drupal', 'netezza', 'teradata', 'django', 'haskell', 'smarty', 'designer', 'opencl', 'unity', 'sharepoint']
   companies: ['android', 'group', 'ascendify', 'ampush', 'zynga', 'mulesoft', 'mindjet', 'imgur', 'mashape',
   'plastiq', 'humble', 'software', 'weebly', 'zipongo',
   'hellosign', '5th finger','lynda','balluun','capital one', 'infoobjects', 'bizlol', 'minted',
