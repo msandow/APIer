@@ -164,7 +164,6 @@ class ScraperCore
   
   listingFilter: (c)=>
     d = new Date()
-    d.setHours(0,0,0,0)
 
     companies = if @search.companies.length then new RegExp(@search.companies.map((i)->
       regex.prefix + utilities.escapeRegExp(i) + regex.suffix
