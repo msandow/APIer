@@ -127,8 +127,8 @@ class ScraperCore
       str = str.replace('t00:00:00.0000000','')
       map.setTime(Date.parse(str))
 
-    #if isNaN( map.getTime() )
-        #console.log(str)
+    if isNaN( map.getTime() )
+      console.log(str)
 
     map
 
