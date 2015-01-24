@@ -22,22 +22,13 @@ search =
   'cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing', 'vircon', 'ziprecruiter', 'ampush', 'jobvite', 'beyondsoft', 'technologies', 'recruiting', 'diverse lynx']
   #
   location: 'san francisco'
-  filterLocations: ['palo alto', 'oakland', 'sausalito', 'san jose', 'redwood city', 'emeryville', 'menlo park', 'san carlos',
-  'moutain view', 'hayward', 'sunnyvale', 'santa clara', 'san mateo', 'foster city', 'south san francisco', 'burlingame', 'san rafael',
-  'san bruno', 'milpitas', 'brisbane']
+  filterLocations: []
   days: 1
   nice: ['coffee', 'independent', 'salary', 'generious', 'fun', 'fast', 'catered', 'small', 'beer', 'node', 'php', 'startup',
-  'start-up', 'start up', 'travel', 'europe']
+  'start-up', 'start up', 'travel', 'europe', 'mithril']
   bad: ['angular', 'angularjs', '8+', '8 years', 'agile', 'angular.js', 'advertising', 'symfony', 'CS fundamentals', 'education',
   'marketing', 'a/b testing']
-  blacklist: ['e5ba4b423775959223e3144f73b633fa', '407eecf081b9f16ddfd92c84eafc0660', 'c447dc52b29e51940609a805d34bcd14',
-  'd5f1377b8ee9d6c53a9401bcf2e57bf4', 'f86dc3fa0a73649823d3e075ca9f04e0', 'f7e5dcb6d1be6dfe44c7dff5f76997cc',
-  '5c18c302fa8f1e53d6dbd115b67583cd', 'b3c52a9fb4d3304e0446a9651e3954af', '7e70a1e6915ac2698e07eff38a519332',
-  'ec3185f4e91ed3975aa680a2c60f9f27', 'a78bf388a930bbbbace1b5fcc2dd81c1', '352412fd827d7ab0598640d6a86eb097',
-  '72885c1c0d85a021aafbc0ae91554b20', '533847d8128dbc3c60a1e91293c543e0', '4dcc6d7fa189a6ff8f12a80601515923',
-  'c9ed7c2a7d6beae50a6169bffc27468f', '01fc7523f53c620b19c79a7be547e143', 'eee89a790a33e3bc0c35b55ebedec1f0',
-  '49ca5b4acccfac004d6e6c5c2a4d5459', '3b4f1f53e11db07e8d0872cb845430d9', '2318a4e2a4823cb767d55744917dcd19',
-  'c6213f07706d01c145974762d4e982f2', '57e2a883e8bf00952e91e5db97b755dc']
+  blacklist: []
 
 mySearch = require(__dirname + '/../lib/searchObject.coffee')(search)
 
