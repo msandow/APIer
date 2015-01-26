@@ -174,7 +174,7 @@ class ScraperCore
     c.link isnt '??' and @search.blacklist.indexOf(c.positionHash) is -1
   
   getListingLinks: (listingPage, cb)->
-    dom = listingPage.responseObj
+    dom = listingPage?.responseObj
     if typeof dom is 'function'
       collection = @listingParser(dom).filter(@listingFilter)
       cb(null, collection)
