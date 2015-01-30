@@ -26,18 +26,19 @@ module.exports = () ->
     listingParser: (dom)->
       listings = []
       self = this
+      
+      if dom
+        for d in dom
+          oo = new obj(
+            d.title,
+            d.startup.name,
+            d.angellist_url,
+            self.timeParser(d.updated_at)
+          )
 
-      for d in dom
-        oo = new obj(
-          d.title,
-          d.startup.name,
-          d.angellist_url,
-          self.timeParser(d.updated_at)
-        )
+          oo.content = d.description
 
-        oo.content = d.description
-
-        listings.push(oo)
+          listings.push(oo)
 
       listings
   )
