@@ -8,7 +8,7 @@ class indeedParser extends core
 
 module.exports = () ->
   new indeedParser(
-    listingURL: 'http://www.indeed.com/jobs?as_any=&as_phr=&as_and={{search}}&as_not={{negative}}&as_ttl=&as_cmp=&jt=fulltime&st=&sr=directhire&salary=&radius=25&l={{location}}&fromage=any&limit=50&sort=date&psf=advsrch'
+    listingURL: 'http://www.indeed.com/jobs?as_any=&as_phr=&as_and={{search}}&as_not={{negative}}&as_ttl=&as_cmp=&jt=fulltime&st=&sr=directhire&salary=&radius=50&l={{location}}&fromage=any&limit=50&sort=date&psf=advsrch'
     listingParser: (dom)->
       listings = []
       self = this

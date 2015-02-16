@@ -7,7 +7,7 @@ class monsterParser extends core
 
 module.exports = () ->
   new monsterParser(
-    listingURL: 'http://jobsearch.monster.com/search/{{location}}+Full-Time_128?tm=Last-14-Days&q={{search}}&where={{location}}&rad=20-miles&sort=dt.rv.di'
+    listingURL: 'http://jobsearch.monster.com/search/{{location}}+Full-Time_128?tm=Last-14-Days&q={{search}}&where={{location}}&rad=50-miles&sort=dt.rv.di'
     listingParser: (dom)->
       listings = []
       self = this

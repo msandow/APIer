@@ -11,7 +11,7 @@ class techcareersParser extends core
       FKeywords:@search.search.join(' ')
       FSearchType:2
       FWhere:@search.location
-      FRadius:25
+      FRadius:50
       FCountryState:''
       FAreaCode1:''
       FAreaCode2:''
@@ -31,7 +31,7 @@ module.exports = () ->
       
       dom('.job[data-jobid]').each(->
         listings.push(new obj(
-            dom(@).find('h2.theme-primary-link-color').text(),
+            dom(@).find('h4.theme-primary-link-color').text(),
             dom(@).find('.job-title-company span').eq(0).text(),
             dom(@).find('a[itemprop="url"]').attr('href'),
             self.timeParser(dom(@).find('time[itemprop="datePosted"]').text())

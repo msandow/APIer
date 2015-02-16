@@ -9,7 +9,7 @@ class diceParser extends core
 
 module.exports = () ->
   new diceParser(
-    listingURL: 'https://www.dice.com/jobs/filters?inputJSON={"q":"{{search}} {{negative}}","l":"{{location}}","limit":100,"sort":"date"}'
+    listingURL: 'https://www.dice.com/jobs/filters?inputJSON={"q":"{{search}} {{negative}}","l":"{{location}}","radius":"50","limit":100,"sort":"date"}'
     listingParser: (dom)->
       dom = cheerio.load(dom.searchResults)
       

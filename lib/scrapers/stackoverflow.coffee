@@ -7,7 +7,7 @@ class stackoverflowParser extends core
 
 module.exports = () ->
   new stackoverflowParser(
-    listingURL: 'http://careers.stackoverflow.com/jobs?searchTerm={{search}}&type=permanent&location={{location}}&range=20&distanceUnits=Miles&sort=p'
+    listingURL: 'http://careers.stackoverflow.com/jobs?searchTerm={{search}}&type=permanent&location={{location}}&range=50&distanceUnits=Miles&sort=p'
     listingParser: (dom)->
       listings = []
       self = this
