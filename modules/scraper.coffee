@@ -23,7 +23,7 @@ search =
   'info\. objects', 'revolution global']
   #
   location: 'san francisco'
-  filterLocations: []
+  filterLocations: ['redwood']
   days: 1.5
   nice: ['coffee', 'independent', 'salary', 'generious', 'fun', 'fast', 'catered', 'small', 'beer', 'node', 'php', 'startup',
   'start-up', 'start up', 'travel', 'europe', 'mithril']
