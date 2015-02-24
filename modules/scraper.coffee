@@ -9,9 +9,9 @@ ROOT = exports ? this
 ROOT.WARMING = false
 
 search =
-  search: ['javascript','developer']
-  negative: ['.net','ios','rails','python','ruby', 'salesforce', 'junior', 'wordpress', 'j2ee', 'manager',
-  'java', 'dba', 'consultant', 'plm', 'cq', 'admin', 'analyst', 'contract', 'intern', 'jsp', 'recruiting', 'informatica', 'asp.net',
+  search: ['javascript']
+  negative: ['.net','ios','ruby', 'salesforce', 'junior', 'wordpress', 'j2ee', 'manager',
+  'dba', 'consultant', 'plm', 'cq', 'admin', 'analyst', 'contract', 'intern', 'jsp', 'recruiting', 'informatica', 'asp.net',
   'drupal', 'netezza', 'teradata', 'django', 'haskell', 'smarty', 'designer', 'opencl', 'unity', 'sharepoint']
   companies: ['android', 'group', 'ascendify', 'ampush', 'zynga', 'mulesoft', 'mindjet', 'imgur', 'mashape',
   'plastiq', 'humble', 'software', 'weebly', 'zipongo',
@@ -19,11 +19,12 @@ search =
   'gliffy', 'corvisacloud', 'drishticon', 'quardev', 'osi', 'twilio', 'deegit', 'moodys', 'ideahelix', 'employment', 
   'macys', 'macy\'s', 'insight global', 'tellapart', 'continuum', 'tokbox', 'peanut labs', 'buffer', 'celtra', 'opentable',
   'stumbleupon',
-  'cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing', 'vircon', 'ziprecruiter', 'ampush', 'jobvite', 'beyondsoft', 'technologies', 'recruiting', 'diverse lynx']
+  'cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing', 'vircon', 'ziprecruiter', 'ampush', 'jobvite', 'beyondsoft', 'technologies', 'recruiting', 'diverse lynx',
+  'info\. objects', 'revolution global']
   #
   location: 'san francisco'
   filterLocations: []
-  days: 1
+  days: 1.5
   nice: ['coffee', 'independent', 'salary', 'generious', 'fun', 'fast', 'catered', 'small', 'beer', 'node', 'php', 'startup',
   'start-up', 'start up', 'travel', 'europe', 'mithril']
   bad: ['angular', 'angularjs', '8+', '8 years', 'agile', 'angular.js', 'advertising', 'symfony', 'CS fundamentals', 'education',
