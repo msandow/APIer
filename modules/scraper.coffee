@@ -30,7 +30,7 @@ search =
   bad: ['angular', 'angularjs', '8+', '8 years', 'agile', 'angular.js', 'advertising', 'symfony', 'CS fundamentals', 'education',
   'marketing', 'a/b testing', 'san francisco']
   blacklist: []
-  filterTitles: ['java\s', 'mobile', 'performance']
+  filterTitles: ['java ', 'mobile', 'performance']
 
 mySearch = require(__dirname + '/../lib/searchObject.coffee')(search)
 
