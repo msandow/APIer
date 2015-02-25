@@ -9,6 +9,7 @@ module.exports = (conf) ->
     nice: conf.nice or []
     bad: conf.bad or []
     blacklist: conf.blacklist or []
+    filterTitles: conf.filterTitles or []
   }
 
 
