@@ -20,7 +20,7 @@ search =
   'macys', 'macy\'s', 'insight global', 'tellapart', 'continuum', 'tokbox', 'peanut labs', 'buffer', 'celtra', 'opentable',
   'stumbleupon', 'switch communications',
   'cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing', 'vircon', 'ziprecruiter', 'ampush', 'jobvite', 'beyondsoft', 'technologies', 'recruiting', 'diverse lynx',
-  'info\. objects', 'revolution global', 'mtnview', 'mtvtech']
+  'info\. objects', 'revolution global', 'mtnview', 'mtvtech', 'robert half']
   #
   location: 'san francisco'
   filterLocations: ['redwood']
