@@ -135,7 +135,7 @@ class ScraperCore
     map
 
   contentParser: (ob, origin) =>
-    for s in ['#pnlJobDescription', '#job_body_box', '.pjb-box-inner:first', 'section.userbody', '.dc_content', '#detailDescription', '.jobdetail', '.detail:first', '.job_description, .job_info', '.jobDescriptionContent', '.jvdescriptionbody', '#js-job-description', '#content', '.des_content', '.description-section', '#lbljobdesc', '.jobDesc', '.iCIMS_JobPage', '.content:first', '#job_summary', '.ftlrow .editablesection', '.job-details', '.jobDetailContent', '#jobDesciptionDiv', '#jobcopy', '#job_desc', 'table[role="presentation"]', '.iCIMS_JobPage', '.fixedwidthJobPosting', '.jobs-content']
+    for s in ['#pnlJobDescription', '#job_body_box', '.pjb-box-inner:first', 'section.userbody', '.dc_content', '#detailDescription', '.jobdetail', '.detail:first', '.job_description, .job_info', '.jobDescriptionContent', '.jvdescriptionbody', '#js-job-description', '#content', '.des_content', '.description-section', '#lbljobdesc', '.jobDesc', '.iCIMS_JobPage', '.content:first', '#job_summary', '.ftlrow .editablesection', '.job-details', '.jobDetailContent', '#jobDesciptionDiv', '#jobcopy', '#job_desc', 'table[role="presentation"]', '.iCIMS_JobPage', '.fixedwidthJobPosting', '.jobs-content', '.panel-secondary', 'article', '.CJT-jobdescp', '.omega']
       ss = s.replace(':first','')
       if ob(ss).length
         if s.indexOf(':first') > -1
