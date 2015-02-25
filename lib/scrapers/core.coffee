@@ -168,9 +168,14 @@ class ScraperCore
     companies = if @search.companies.length then new RegExp(@search.companies.map((i)->
       regex.prefix + utilities.escapeRegExp(i) + regex.suffix
     ).join('|').trim(), 'gi') else false
+    
+    titles = if @search.filterTitles.length then new RegExp(@search.filterTitles.map((i)->
+      regex.prefix + utilities.escapeRegExp(i) + regex.suffix
+    ).join('|').trim(), 'gi') else false
 
     d.getTime() - c.time.getTime() <= (@search.days * 86400000) and
     (not companies or c.company is '??' or not companies.test(c.company)) and
+    (not titles or not titles.test(c.title)) and
     c.link isnt '??' and @search.blacklist.indexOf(c.positionHash) is -1
   
   getListingLinks: (listingPage, cb)->

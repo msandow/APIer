@@ -10,7 +10,7 @@ ROOT.WARMING = false
 
 search =
   search: ['javascript']
-  negative: ['.net','ios','ruby', 'salesforce', 'junior', 'wordpress', 'j2ee', 'manager',
+  negative: ['.net','ios','ruby', 'salesforce', 'junior', 'wordpress', 'j2ee', 'manager', 'perl',
   'dba', 'consultant', 'plm', 'cq', 'admin', 'analyst', 'contract', 'intern', 'jsp', 'recruiting', 'informatica', 'asp.net',
   'drupal', 'netezza', 'teradata', 'django', 'haskell', 'smarty', 'designer', 'opencl', 'unity', 'sharepoint']
   companies: ['android', 'group', 'ascendify', 'ampush', 'zynga', 'mulesoft', 'mindjet', 'imgur', 'mashape',
@@ -18,9 +18,9 @@ search =
   'hellosign', '5th finger','lynda','balluun','capital one', 'infoobjects', 'bizlol', 'minted',
   'gliffy', 'corvisacloud', 'drishticon', 'quardev', 'osi', 'twilio', 'deegit', 'moodys', 'ideahelix', 'employment', 
   'macys', 'macy\'s', 'insight global', 'tellapart', 'continuum', 'tokbox', 'peanut labs', 'buffer', 'celtra', 'opentable',
-  'stumbleupon',
+  'stumbleupon', 'switch communications',
   'cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing', 'vircon', 'ziprecruiter', 'ampush', 'jobvite', 'beyondsoft', 'technologies', 'recruiting', 'diverse lynx',
-  'info\. objects', 'revolution global']
+  'info\. objects', 'revolution global', 'mtnview', 'mtvtech']
   #
   location: 'san francisco'
   filterLocations: ['redwood']
@@ -30,6 +30,7 @@ search =
   bad: ['angular', 'angularjs', '8+', '8 years', 'agile', 'angular.js', 'advertising', 'symfony', 'CS fundamentals', 'education',
   'marketing', 'a/b testing', 'san francisco']
   blacklist: []
+  filterTitles: ['java\s', 'mobile', 'performance']
 
 mySearch = require(__dirname + '/../lib/searchObject.coffee')(search)
 
