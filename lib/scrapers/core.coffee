@@ -174,8 +174,8 @@ class ScraperCore
     ).join('|').trim(), 'gi') else false
 
     d.getTime() - c.time.getTime() <= (@search.days * 86400000) and
-    (not companies or c.company is '??' or not companies.test(c.company)) and
-    (not titles or not titles.test(c.title)) and
+    (not companies or c.company is '??' or not companies.test(c.company.toLowerCase())) and
+    (not titles or not titles.test(c.title.toLowerCase())) and
     c.link isnt '??' and @search.blacklist.indexOf(c.positionHash) is -1
   
   getListingLinks: (listingPage, cb)->
