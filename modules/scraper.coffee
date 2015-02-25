@@ -24,11 +24,11 @@ search =
   #
   location: 'san francisco'
   filterLocations: ['redwood']
-  days: 1.5
+  days: 1
   nice: ['coffee', 'independent', 'salary', 'generious', 'fun', 'fast', 'catered', 'small', 'beer', 'node', 'php', 'startup',
   'start-up', 'start up', 'travel', 'europe', 'mithril']
   bad: ['angular', 'angularjs', '8+', '8 years', 'agile', 'angular.js', 'advertising', 'symfony', 'CS fundamentals', 'education',
-  'marketing', 'a/b testing']
+  'marketing', 'a/b testing', 'san francisco']
   blacklist: []
 
 mySearch = require(__dirname + '/../lib/searchObject.coffee')(search)
