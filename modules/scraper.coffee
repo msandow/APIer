@@ -10,9 +10,9 @@ ROOT.WARMING = false
 
 search =
   search: ['javascript']
-  negative: ['.net','ios','ruby', 'salesforce', 'junior', 'wordpress', 'j2ee', 'manager', 'perl',
+  negative: ['.net', 'ruby', 'salesforce', 'junior', 'wordpress', 'j2ee', 'manager', 'perl',
   'dba', 'consultant', 'plm', 'cq', 'admin', 'analyst', 'contract', 'intern', 'jsp', 'recruiting', 'informatica', 'asp.net',
-  'drupal', 'netezza', 'teradata', 'django', 'haskell', 'smarty', 'designer', 'opencl', 'unity', 'sharepoint']
+  'drupal', 'netezza', 'teradata', 'django', 'haskell', 'smarty', 'designer', 'opencl', 'unity', 'sharepoint', 'client']
   companies: ['android', 'group', 'ascendify', 'ampush', 'zynga', 'mulesoft', 'mindjet', 'imgur', 'mashape',
   'plastiq', 'humble', 'software', 'weebly', 'zipongo',
   'hellosign', '5th finger','lynda','balluun','capital one', 'infoobjects', 'bizlol', 'minted',
@@ -20,7 +20,7 @@ search =
   'macys', 'macy\'s', 'insight global', 'tellapart', 'continuum', 'tokbox', 'peanut labs', 'buffer', 'celtra', 'opentable',
   'stumbleupon', 'switch communications',
   'cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing', 'vircon', 'ziprecruiter', 'ampush', 'jobvite', 'beyondsoft', 'technologies', 'recruiting', 'diverse lynx',
-  'info\. objects', 'revolution global', 'mtnview', 'mtvtech', 'robert half']
+  'info\. objects', 'revolution global', 'mtnview', 'mtvtech', 'robert half', 'fild', 'netsource']
   #
   location: 'san francisco'
   filterLocations: ['redwood']
@@ -30,7 +30,7 @@ search =
   bad: ['angular', 'angularjs', '8+', '8 years', 'agile', 'angular.js', 'advertising', 'symfony', 'CS fundamentals', 'education',
   'marketing', 'a/b testing', 'san francisco']
   blacklist: []
-  filterTitles: ['java ', 'mobile', 'performance', 'quality', 'director']
+  filterTitles: ['java ', 'mobile', 'performance', 'quality', 'director', 'android', 'ios']
 
 mySearch = require(__dirname + '/../lib/searchObject.coffee')(search)
 
