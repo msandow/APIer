@@ -20,7 +20,7 @@ search =
   'macys', 'macy\'s', 'insight global', 'tellapart', 'continuum', 'tokbox', 'peanut labs', 'buffer', 'celtra', 'opentable',
   'stumbleupon', 'switch communications',
   'cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing', 'vircon', 'ziprecruiter', 'ampush', 'jobvite', 'beyondsoft', 'technologies', 'recruiting', 'diverse lynx',
-  'info\. objects', 'revolution global', 'mtnview', 'mtvtech', 'robert half', 'fild', 'netsource']
+  'info\. objects', 'revolution global', 'mtnview', 'mtvtech', 'robert half', 'fild', 'netsource', 'damcosoft', 'damco', 'apple']
   #
   location: 'san francisco'
   filterLocations: ['redwood']
@@ -30,7 +30,7 @@ search =
   bad: ['angular', 'angularjs', '8+', '8 years', 'agile', 'angular.js', 'advertising', 'symfony', 'CS fundamentals', 'education',
   'marketing', 'a/b testing', 'san francisco']
   blacklist: []
-  filterTitles: ['java ', 'mobile', 'performance', 'quality', 'director', 'android', 'ios']
+  filterTitles: ['java ', 'mobile', 'performance', 'quality', 'director', 'android', 'ios', 'c++']
 
 mySearch = require(__dirname + '/../lib/searchObject.coffee')(search)
 
