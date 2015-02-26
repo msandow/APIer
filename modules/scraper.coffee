@@ -18,7 +18,7 @@ search =
   'hellosign', '5th finger','lynda','balluun','capital one', 'infoobjects', 'bizlol', 'minted',
   'gliffy', 'corvisacloud', 'drishticon', 'quardev', 'osi', 'twilio', 'deegit', 'moodys', 'ideahelix', 'employment', 
   'macys', 'macy\'s', 'insight global', 'tellapart', 'continuum', 'tokbox', 'peanut labs', 'buffer', 'celtra', 'opentable',
-  'stumbleupon', 'switch communications',
+  'stumbleupon', 'switch communications', 'resources', 'techfetch',
   'cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing', 'vircon', 'ziprecruiter', 'ampush', 'jobvite', 'beyondsoft', 'technologies', 'recruiting', 'diverse lynx',
   'info\. objects', 'revolution global', 'mtnview', 'mtvtech', 'robert half', 'fild', 'netsource', 'damcosoft', 'damco', 'apple']
   #
