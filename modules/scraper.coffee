@@ -21,7 +21,7 @@ search =
   'stumbleupon', 'switch communications', 'resources', 'techfetch',
   'cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing', 'vircon', 'ziprecruiter', 'ampush', 'jobvite', 'beyondsoft', 'technologies', 'recruiting', 'diverse lynx',
   'info\. objects', 'revolution global', 'mtnview', 'mtvtech', 'robert half', 'fild', 'netsource', 'damcosoft', 'damco', 'apple',
-  'VisionIT', 'Techsophy', 'Mahindra', 'Zentek']
+  'VisionIT', 'Techsophy', 'Mahindra', 'Zentek', 'Intelliswift']
   #
   location: 'san francisco'
   filterLocations: ['redwood']
