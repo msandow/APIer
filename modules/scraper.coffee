@@ -24,7 +24,7 @@ search =
   'VisionIT', 'Techsophy', 'Mahindra', 'Zentek', 'Intelliswift', 'k-tek', 'tekvalley', 'gdh consulting']
   #
   location: 'san francisco'
-  filterLocations: ['redwood']
+  filterLocations: ['redwood', 'san ramon', 'san francisco']
   days: 1
   nice: ['coffee', 'independent', 'salary', 'generious', 'fun', 'fast', 'catered', 'small', 'beer', 'node', 'php', 'startup',
   'start-up', 'start up', 'travel', 'europe', 'mithril']
