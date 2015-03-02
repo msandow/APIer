@@ -21,10 +21,10 @@ search =
   'stumbleupon', 'switch communications', 'resources', 'techfetch',
   'cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing', 'vircon', 'ziprecruiter', 'ampush', 'jobvite', 'beyondsoft', 'technologies', 'recruiting', 'diverse lynx',
   'info\. objects', 'revolution global', 'mtnview', 'mtvtech', 'robert half', 'fild', 'netsource', 'damcosoft', 'damco', 'apple',
-  'VisionIT', 'Techsophy', 'Mahindra', 'Zentek', 'Intelliswift', 'k-tek', 'tekvalley', 'gdh consulting']
+  'VisionIT', 'Techsophy', 'Mahindra', 'Zentek', 'Intelliswift', 'k-tek', 'tekvalley', 'gdh consulting', 'autodesk']
   #
   location: 'san francisco'
-  filterLocations: ['redwood', 'san ramon', 'san francisco']
+  filterLocations: ['redwood', 'san ramon']
   days: 1
   nice: ['coffee', 'independent', 'salary', 'generious', 'fun', 'fast', 'catered', 'small', 'beer', 'node', 'php', 'startup',
   'start-up', 'start up', 'travel', 'europe', 'mithril']
