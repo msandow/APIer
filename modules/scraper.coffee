@@ -30,7 +30,7 @@ search =
   nice: ['coffee', 'independent', 'salary', 'generious', 'fun', 'fast', 'catered', 'small', 'beer', 'node', 'php', 'startup',
   'start-up', 'start up', 'travel', 'europe', 'mithril']
   bad: ['angular', 'angularjs', '8+', '8 years', 'agile', 'angular.js', 'advertising', 'symfony', 'CS fundamentals', 'education',
-  'marketing', 'a/b testing', 'san francisco']
+  'marketing', 'a/b testing', 'san francisco', 'offshore', 'india']
   blacklist: []
   filterTitles: ['java ', 'java)', 'mobile', 'performance', 'quality', 'director', 'android', 'ios', 'c++', 'flash', 'aggregation' ,'test',
   'automation', 'network', 'administrator', 'virtual', 'QA', 'associate', 'principal', 'devops']
