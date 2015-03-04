@@ -25,7 +25,7 @@ search =
   'oracle', 'zealtech', 'eitacies', 'scrumlink', 'consulting', 'trinamix', 'associates', 'roblox']
   #
   location: 'san francisco'
-  filterLocations: ['redwood', 'san ramon']
+  filterLocations: ['redwood', 'san ramon', 'dublin']
   days: 1
   nice: ['coffee', 'independent', 'salary', 'generious', 'fun', 'fast', 'catered', 'small', 'beer', 'node', 'php', 'startup',
   'start-up', 'start up', 'travel', 'europe', 'mithril']
