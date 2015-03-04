@@ -22,7 +22,7 @@ search =
   'cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing', 'vircon', 'ziprecruiter', 'ampush', 'jobvite', 'beyondsoft', 'technologies', 'recruiting', 'diverse lynx',
   'info\. objects', 'revolution global', 'mtnview', 'mtvtech', 'robert half', 'fild', 'netsource', 'damcosoft', 'damco', 'apple',
   'VisionIT', 'Techsophy', 'Mahindra', 'Zentek', 'Intelliswift', 'k-tek', 'tekvalley', 'gdh consulting', 'autodesk', 'hire', 'CompNova', 'CyberSearch',
-  'oracle', 'zealtech', 'eitacies', 'scrumlink']
+  'oracle', 'zealtech', 'eitacies', 'scrumlink', 'consulting', 'trinamix', 'associates']
   #
   location: 'san francisco'
   filterLocations: ['redwood', 'san ramon']
