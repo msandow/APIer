@@ -25,15 +25,15 @@ search =
   'oracle', 'zealtech', 'eitacies', 'scrumlink', 'consulting', 'trinamix', 'associates', 'roblox']
   #
   location: 'san francisco'
-  filterLocations: ['redwood', 'san ramon', 'dublin']
+  filterLocations: ['redwood', 'san ramon', 'dublin', 'Emeryville']
   days: 1
   nice: ['coffee', 'independent', 'salary', 'generious', 'fun', 'fast', 'catered', 'small', 'beer', 'node', 'php', 'startup',
   'start-up', 'start up', 'travel', 'europe', 'mithril']
   bad: ['angular', 'angularjs', '8+', '8 years', 'agile', 'angular.js', 'advertising', 'symfony', 'CS fundamentals', 'education',
-  'marketing', 'a/b testing', 'san francisco', 'offshore', 'india']
+  'marketing', 'a/b testing', 'san francisco', 'offshore', 'india', '6 month']
   blacklist: []
   filterTitles: ['java ', 'java)', 'mobile', 'performance', 'quality', 'director', 'android', 'ios', 'c++', 'flash', 'aggregation' ,'test',
-  'automation', 'network', 'administrator', 'virtual', 'QA', 'associate', 'principal', 'devops']
+  'automation', 'network', 'administrator', 'virtual', 'QA', 'associate', 'principal', 'devops', 'python', 'rails']
 
 mySearch = require(__dirname + '/../lib/searchObject.coffee')(search)
 
