@@ -23,7 +23,7 @@ search =
   'info\. objects', 'revolution global', 'mtnview', 'mtvtech', 'robert half', 'fild', 'netsource', 'damcosoft', 'damco', 'apple',
   'VisionIT', 'Techsophy', 'Mahindra', 'Zentek', 'Intelliswift', 'k-tek', 'tekvalley', 'gdh consulting', 'autodesk', 'hire', 'CompNova', 'CyberSearch',
   'oracle', 'zealtech', 'eitacies', 'scrumlink', 'consulting', 'trinamix', 'associates', 'roblox', 'xperttech', 'vertisystem',
-  'nextstepsystems', 'Ginas Tech Jobs', 'parallelpartners']
+  'nextstepsystems', 'Ginas Tech Jobs', 'parallelpartners', 'parallel partners']
   #
   location: 'san francisco'
   filterLocations: ['redwood', 'san ramon', 'dublin', 'Emeryville']
