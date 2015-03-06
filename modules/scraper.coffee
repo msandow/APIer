@@ -22,7 +22,8 @@ search =
   'cybercoders', 'accenture', 'technology', 'solutions', 'active soft', 'staffing', 'vircon', 'ziprecruiter', 'ampush', 'jobvite', 'beyondsoft', 'technologies', 'recruiting', 'diverse lynx',
   'info\. objects', 'revolution global', 'mtnview', 'mtvtech', 'robert half', 'fild', 'netsource', 'damcosoft', 'damco', 'apple',
   'VisionIT', 'Techsophy', 'Mahindra', 'Zentek', 'Intelliswift', 'k-tek', 'tekvalley', 'gdh consulting', 'autodesk', 'hire', 'CompNova', 'CyberSearch',
-  'oracle', 'zealtech', 'eitacies', 'scrumlink', 'consulting', 'trinamix', 'associates', 'roblox', 'xperttech', 'vertisystem']
+  'oracle', 'zealtech', 'eitacies', 'scrumlink', 'consulting', 'trinamix', 'associates', 'roblox', 'xperttech', 'vertisystem',
+  'nextstepsystems', 'Ginas Tech Jobs', 'parallelpartners']
   #
   location: 'san francisco'
   filterLocations: ['redwood', 'san ramon', 'dublin', 'Emeryville']
@@ -30,7 +31,7 @@ search =
   nice: ['coffee', 'independent', 'salary', 'generious', 'fun', 'fast', 'catered', 'small', 'beer', 'node', 'php', 'startup',
   'start-up', 'start up', 'travel', 'europe', 'mithril']
   bad: ['angular', 'angularjs', '8+', '8 years', 'agile', 'angular.js', 'advertising', 'symfony', 'CS fundamentals', 'education',
-  'marketing', 'a/b testing', 'san francisco', 'offshore', 'india', '6 month']
+  'marketing', 'a/b testing', 'san francisco', 'offshore', 'india', '6 month', 'dojo', 'd3']
   blacklist: []
   filterTitles: ['java ', 'java)', 'mobile', 'performance', 'quality', 'director', 'android', 'ios', 'c++', 'flash', 'aggregation' ,'test',
   'automation', 'network', 'administrator', 'virtual', 'QA', 'associate', 'principal', 'devops', 'python', 'rails']
