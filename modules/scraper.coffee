@@ -34,7 +34,7 @@ search =
   'marketing', 'a/b testing', 'san francisco', 'offshore', 'india', '6 month', 'dojo', 'd3']
   blacklist: []
   filterTitles: ['java ', 'java)', 'mobile', 'performance', 'quality', 'director', 'android', 'ios', 'c++', 'flash', 'aggregation' ,'test',
-  'automation', 'network', 'administrator', 'virtual', 'QA', 'associate', 'principal', 'devops', 'python', 'rails']
+  'automation', 'network', 'administrator', 'virtual', 'QA', 'associate', 'principal', 'devops', 'python', 'rails', 'meteor']
 
 mySearch = require(__dirname + '/../lib/searchObject.coffee')(search)
 
