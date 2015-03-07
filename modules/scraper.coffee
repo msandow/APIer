@@ -34,7 +34,7 @@ search =
   bad: ['angular', 'angularjs', '8+', '8 years', 'agile', 'angular.js', 'advertising', 'symfony', 'CS fundamentals', 'education',
   'marketing', 'a/b testing', 'san francisco', 'offshore', 'india', '6 month', 'dojo', 'd3']
   blacklist: []
-  filterTitles: ['assitant', 'scientist', 'marketing', 'java ', 'java)', 'mobile', 'performance', 'quality', 'director', 'android', 'ios', 'c++', 'flash', 'aggregation' ,'test',
+  filterTitles: ['assistant', 'scientist', 'marketing', 'java ', 'java)', 'mobile', 'performance', 'quality', 'director', 'android', 'ios', 'c++', 'flash', 'aggregation' ,'test',
   'automation', 'network', 'administrator', 'virtual', 'QA', 'associate', 'principal', 'devops', 'python', 'rails', 'meteor',
   'support']
 
