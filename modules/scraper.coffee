@@ -12,7 +12,8 @@ search =
   search: ['javascript']
   negative: ['.net', 'ruby', 'salesforce', 'junior', 'wordpress', 'j2ee', 'manager', 'perl', 'evangelist',
   'dba', 'consultant', 'plm', 'cq', 'admin', 'analyst', 'contract', 'intern', 'jsp', 'recruiting', 'informatica', 'asp.net',
-  'drupal', 'netezza', 'teradata', 'django', 'haskell', 'smarty', 'designer', 'opencl', 'unity', 'sharepoint', 'client', 'partner']
+  'drupal', 'netezza', 'teradata', 'django', 'haskell', 'smarty', 'designer', 'opencl', 'unity', 'sharepoint', 'client', 'partner',
+  'cybercoders']
   companies: ['android', 'group', 'ascendify', 'ampush', 'zynga', 'mulesoft', 'mindjet', 'imgur', 'mashape',
   'plastiq', 'humble', 'software', 'weebly', 'zipongo',
   'hellosign', '5th finger','lynda','balluun','capital one', 'infoobjects', 'bizlol', 'minted',
@@ -23,7 +24,7 @@ search =
   'info\. objects', 'revolution global', 'mtnview', 'mtvtech', 'robert half', 'fild', 'netsource', 'damcosoft', 'damco', 'apple',
   'VisionIT', 'Techsophy', 'Mahindra', 'Zentek', 'Intelliswift', 'k-tek', 'tekvalley', 'gdh consulting', 'autodesk', 'hire', 'CompNova', 'CyberSearch',
   'oracle', 'zealtech', 'eitacies', 'scrumlink', 'consulting', 'trinamix', 'associates', 'roblox', 'xperttech', 'vertisystem',
-  'nextstepsystems', 'Ginas Tech Jobs', 'parallelpartners', 'parallel partners']
+  'nextstepsystems', 'Ginas Tech Jobs', 'parallelpartners', 'parallel partners', 'systematics agency']
   #
   location: 'san francisco'
   filterLocations: ['redwood', 'san ramon', 'dublin', 'Emeryville']
@@ -33,8 +34,9 @@ search =
   bad: ['angular', 'angularjs', '8+', '8 years', 'agile', 'angular.js', 'advertising', 'symfony', 'CS fundamentals', 'education',
   'marketing', 'a/b testing', 'san francisco', 'offshore', 'india', '6 month', 'dojo', 'd3']
   blacklist: []
-  filterTitles: ['java ', 'java)', 'mobile', 'performance', 'quality', 'director', 'android', 'ios', 'c++', 'flash', 'aggregation' ,'test',
-  'automation', 'network', 'administrator', 'virtual', 'QA', 'associate', 'principal', 'devops', 'python', 'rails', 'meteor']
+  filterTitles: ['assitant', 'scientist', 'marketing', 'java ', 'java)', 'mobile', 'performance', 'quality', 'director', 'android', 'ios', 'c++', 'flash', 'aggregation' ,'test',
+  'automation', 'network', 'administrator', 'virtual', 'QA', 'associate', 'principal', 'devops', 'python', 'rails', 'meteor',
+  'support']
 
 mySearch = require(__dirname + '/../lib/searchObject.coffee')(search)
 
