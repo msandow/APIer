@@ -16,7 +16,7 @@ module.exports = () ->
         listings.push(new obj(
             dom(@).find('a.title').text(),
             dom(@).find('h4.company').last().text(),
-            dom(@).find('a.title').attr('href').replace(/rid-[a-zA-Z0-9]+/gi, 'rid-').replace(/hits-\d+/gi, 'hits-'),
+            dom(@).find('a.title').attr('href').replace(/rid-[a-zA-Z0-9]+/gi, 'rid-').replace(/hits-\d+/gi, 'hits-').replace(/cjp-\d+/gi, 'cjp-'),
             self.timeParser(dom(@).find('span.ago').text())
           )
         )
