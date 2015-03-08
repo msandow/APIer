@@ -10,7 +10,7 @@ ROOT.WARMING = false
 
 search =
   search: ['javascript']
-  negative: ['.net', 'ruby', 'salesforce', 'junior', 'wordpress', 'j2ee', 'manager', 'perl', 'evangelist',
+  negative: ['.net', 'salesforce', 'junior', 'wordpress', 'j2ee', 'manager', 'perl', 'evangelist',
   'dba', 'consultant', 'plm', 'cq', 'admin', 'analyst', 'contract', 'intern', 'jsp', 'recruiting', 'informatica', 'asp.net',
   'drupal', 'netezza', 'teradata', 'django', 'haskell', 'smarty', 'designer', 'opencl', 'unity', 'sharepoint', 'client', 'partner',
   'cybercoders']
