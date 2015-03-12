@@ -26,7 +26,7 @@ search =
   'oracle', 'zealtech', 'eitacies', 'scrumlink', 'consulting', 'trinamix', 'associates', 'roblox', 'xperttech', 'vertisystem',
   'nextstepsystems', 'Ginas Tech Jobs', 'parallelpartners', 'parallel partners', 'systematics agency',
   'plangrid', 'hall', 'research now', 'adobe', 'expensify', 'leap motion', 'placeiq', 'answers', 'box', 'elasticsearch',
-  'roche', 'polyvore', 'casetext', 'shoprunner']
+  'roche', 'polyvore', 'casetext', 'shoprunner', 'clover']
   #
   location: 'san francisco'
   filterLocations: ['redwood', 'san ramon', 'dublin', 'Emeryville']
@@ -38,7 +38,7 @@ search =
   blacklist: []
   filterTitles: ['assistant', 'scientist', 'marketing', 'java ', 'java)', 'mobile', 'performance', 'quality', 'director', 'android', 'ios', 'c++', 'flash', 'aggregation' ,'test',
   'automation', 'network', 'administrator', 'virtual', 'QA', 'associate', 'principal', 'devops', 'python', 'rails', 'meteor',
-  'support', 'angular', 'angularjs', 'backend', 'sales']
+  'support', 'angular', 'angularjs', 'backend', 'sales', 'accountant', 'game']
 
 mySearch = require(__dirname + '/../lib/searchObject.coffee')(search)
 
