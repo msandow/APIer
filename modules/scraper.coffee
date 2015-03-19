@@ -26,10 +26,10 @@ search =
   'oracle', 'zealtech', 'eitacies', 'scrumlink', 'consulting', 'trinamix', 'associates', 'roblox', 'xperttech', 'vertisystem',
   'nextstepsystems', 'Ginas Tech Jobs', 'parallelpartners', 'parallel partners', 'systematics agency',
   'plangrid', 'hall', 'research now', 'adobe', 'expensify', 'leap motion', 'placeiq', 'answers', 'box', 'elasticsearch',
-  'roche', 'polyvore', 'casetext', 'shoprunner', 'clover', 'citrix', 'walmart', 'it first source']
+  'roche', 'polyvore', 'casetext', 'shoprunner', 'clover', 'citrix', 'walmart', 'it first source', 'akraya']
   #
   location: 'san francisco'
-  filterLocations: ['redwood', 'san ramon', 'dublin', 'Emeryville', 'fremont']
+  filterLocations: ['redwood', 'san ramon', 'dublin', 'Emeryville', 'fremont', 'san francisco']
   days: 1
   nice: ['coffee', 'independent', 'salary', 'generious', 'fun', 'fast', 'catered', 'small', 'beer', 'node', 'php', 'startup',
   'start-up', 'start up', 'travel', 'europe', 'mithril']
