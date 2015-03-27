@@ -9,7 +9,7 @@ ROOT = exports ? this
 ROOT.WARMING = false
 
 search =
-  search: ['javascript']
+  search: ['jquery']
   negative: ['.net', 'salesforce', 'junior', 'wordpress', 'j2ee', 'manager', 'perl', 'evangelist',
   'dba', 'consultant', 'plm', 'cq', 'admin', 'analyst', 'contract', 'intern', 'jsp', 'recruiting', 'informatica', 'asp.net',
   'drupal', 'netezza', 'teradata', 'django', 'haskell', 'smarty', 'designer', 'opencl', 'unity', 'sharepoint', 'client', 'partner',
@@ -27,7 +27,7 @@ search =
   'nextstepsystems', 'Ginas Tech Jobs', 'parallelpartners', 'parallel partners', 'systematics agency',
   'plangrid', 'hall', 'research now', 'adobe', 'expensify', 'leap motion', 'placeiq', 'answers', 'box', 'elasticsearch',
   'roche', 'polyvore', 'casetext', 'shoprunner', 'clover', 'citrix', 'walmart', 'it first source', 'akraya', 'it-scient',
-  'volt']
+  'volt', 'coupons', 'paypal', 'pds tech']
   #
   location: 'san francisco'
   filterLocations: ['redwood', 'san ramon', 'dublin', 'Emeryville', 'fremont', 'san francisco']
