@@ -27,7 +27,7 @@ search =
   'nextstepsystems', 'Ginas Tech Jobs', 'parallelpartners', 'parallel partners', 'systematics agency',
   'plangrid', 'hall', 'research now', 'adobe', 'expensify', 'leap motion', 'placeiq', 'answers', 'box', 'elasticsearch',
   'roche', 'polyvore', 'casetext', 'shoprunner', 'clover', 'citrix', 'walmart', 'it first source', 'akraya', 'it-scient',
-  'volt', 'coupons', 'paypal', 'pds tech']
+  'volt', 'coupons', 'paypal', 'pds tech', 'kelly services']
   #
   location: 'san francisco'
   filterLocations: ['redwood', 'san ramon', 'dublin', 'Emeryville', 'fremont', 'san francisco']
